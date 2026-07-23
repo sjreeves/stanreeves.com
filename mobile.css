@@ -1,0 +1,289 @@
+/* ============================================================
+   stanreeves.com — Mobile Responsive Styles
+   Supplement to per-page inline styles.
+   Breakpoints: tablet ≤1024px, mobile ≤768px
+   ============================================================ */
+
+/* ── Hamburger button (hidden on desktop) ── */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 200;
+  flex-shrink: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #1C1712;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile slide-down menu ── */
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: #F7F3ED;
+  border-bottom: 1px solid #D4C4A8;
+  padding: 8px 0 20px;
+  z-index: 99;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.nav-mobile-menu.open {
+  display: flex;
+}
+.nav-mobile-menu a {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  color: #3D3328;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(212,196,168,0.5);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-mobile-menu a:last-child {
+  border-bottom: none;
+}
+.nav-mobile-menu a:hover, .nav-mobile-menu a:active {
+  background: #F0E8D8;
+  color: #8B6914;
+}
+.nav-mobile-menu .nav-cta-mobile {
+  margin: 12px 24px 0;
+  background: #1C1712;
+  color: #F7F3ED;
+  border: none;
+  padding: 13px 24px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+.nav-mobile-menu .nav-cta-mobile:hover {
+  background: #8B6914;
+  color: #F7F3ED;
+}
+
+/* ============================================================
+   TABLET (≤ 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  nav { padding: 0 32px; }
+  section { padding: 72px 40px; }
+
+  /* Hero: compress right panel */
+  .hero { grid-template-columns: 1fr 300px; }
+  .hero-left { padding: 64px 48px; }
+  .hero-headline { font-size: 52px; }
+
+  /* Audience: 2×2 */
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .audience-card:nth-child(2) { border-right: none; }
+  .audience-card:nth-child(3) { border-top: 1px solid #D4C4A8; }
+  .audience-card:nth-child(4) { border-top: 1px solid #D4C4A8; border-right: none; }
+
+  /* Stats: 2+1 */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card:last-child { grid-column: 1 / -1; border-top: 1px solid #8B6914; }
+
+  /* About strip */
+  .about-strip { gap: 48px; }
+
+  /* Two-col */
+  .two-col { gap: 48px; }
+  .two-col-wide { gap: 48px; }
+
+  /* Footer: 2-col */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+
+  /* CTA */
+  .cta-banner { padding: 64px 40px; }
+  .cta-banner h2 { font-size: 40px; }
+
+  footer { padding: 48px 40px 36px; }
+
+  /* Section headline */
+  .section-headline { font-size: 44px; }
+}
+
+/* ============================================================
+   MOBILE (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ── Nav ── */
+  nav { padding: 0 20px; }
+  .nav-links { display: none !important; }
+  .nav-cta  { display: none !important; }
+  .nav-toggle { display: flex !important; }
+  .nav-brand-name { font-size: 17px; }
+
+  /* ── Hero (homepage two-col grid → single col) ── */
+  .hero {
+    display: block !important;
+    min-height: auto;
+  }
+  .hero-left {
+    padding: 48px 24px 40px;
+    border-right: none;
+    border-bottom: 1px solid #D4C4A8;
+  }
+  .hero-headline { font-size: 40px; max-width: none; }
+  .hero-body     { font-size: 16px; max-width: none; }
+  .hero-right    { padding: 36px 24px; }
+  .hero-photo-placeholder { width: 130px; height: 130px; }
+
+  /* ── Section padding & headlines ── */
+  section { padding: 48px 20px; }
+  .section-headline { font-size: 34px; margin-bottom: 32px; }
+  .section-label    { margin-bottom: 12px; }
+
+  /* ── Page hero ── */
+  .page-hero {
+    padding: 44px 20px 36px !important;
+    display: block !important;    /* overrides any inline grid */
+  }
+  .page-hero > div:last-child {
+    margin-top: 28px;
+    aspect-ratio: 16 / 9;
+    max-height: 240px;
+  }
+  .page-hero-title { font-size: 36px !important; max-width: none; }
+  .page-hero-deck  { font-size: 16px; }
+
+  /* ── Audience grid: 1 col ── */
+  .audience-grid { grid-template-columns: 1fr !important; }
+  .audience-card {
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: 1px solid #D4C4A8 !important;
+  }
+  .audience-card:last-child { border-bottom: none !important; }
+
+  /* ── Stats: 1 col ── */
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-card:last-child { grid-column: auto; }
+  .stat-number { font-size: 60px; }
+
+  /* ── About strip: stack, image first ── */
+  .about-strip {
+    grid-template-columns: 1fr !important;
+    gap: 32px;
+  }
+  .about-img-placeholder { aspect-ratio: 16 / 9; max-height: 260px; }
+  .about-body { font-size: 16px; }
+  .about-quote p { font-size: 19px; }
+
+  /* ── Services: 1 col ── */
+  .services-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Resources: 1 col ── */
+  .resources-grid { grid-template-columns: 1fr !important; }
+
+  /* ── CTA banner: stack ── */
+  .cta-banner {
+    flex-direction: column !important;
+    padding: 48px 20px !important;
+    gap: 28px !important;
+    align-items: flex-start !important;
+  }
+  .cta-banner h2 { font-size: 32px !important; max-width: none; }
+  .cta-banner-actions { flex-direction: column; gap: 12px; width: 100%; }
+  .cta-banner-actions .btn-primary,
+  .cta-banner-actions .btn-secondary { text-align: center; width: 100%; }
+
+  /* ── Two-col layouts (about, contact, audience pages) ── */
+  .two-col      { grid-template-columns: 1fr !important; gap: 32px; }
+  .two-col-wide { grid-template-columns: 1fr !important; gap: 32px; }
+
+  /* ── Service grid (about/audience pages) ── */
+  .service-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Who grid (about page) ── */
+  .who-grid { grid-template-columns: 1fr !important; }
+  .who-card { border-right: none !important; }
+  .who-card:nth-child(even) { border-right: none; }
+
+  /* ── Dark section ── */
+  .dark-section { padding: 48px 20px !important; }
+  .dark-section .section-title { font-size: 34px; }
+
+  /* ── Generic CTA banner on audience pages ── */
+  .cta-actions { flex-direction: column; gap: 12px; width: 100%; }
+  .cta-actions .btn-primary,
+  .cta-actions .btn-secondary { text-align: center; width: 100%; }
+
+  /* ── Footer ── */
+  footer { padding: 40px 20px 28px !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  .footer-copy { font-size: 10px; }
+
+  /* ── Article / blog pages ── */
+  .article-wrap {
+    grid-template-columns: 1fr !important;
+    padding: 0 0 56px !important;
+  }
+  .article-header { padding: 44px 20px 36px !important; }
+  .article-title  { font-size: 36px !important; max-width: none; }
+  .article-deck   { font-size: 16px; }
+  .article-body   { padding: 40px 20px 0 !important; }
+  .article-sidebar {
+    padding: 36px 20px 0 !important;
+    border-left: none !important;
+    border-top: 1px solid #D4C4A8;
+  }
+
+  /* ── Contact page: inline-styled contact type rows ── */
+  a[style*="grid-template-columns:auto 1fr auto"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px;
+    padding: 18px 16px !important;
+  }
+  /* Hide the tiny dot on mobile */
+  a[style*="grid-template-columns:auto 1fr auto"] > div:first-child { display: none; }
+
+  /* ── Contact page: two-col section (form + sidebar) ── */
+  section > div[style*="grid-template-columns:3fr 2fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px;
+  }
+
+  /* ── About page hero: inline grid → block ── */
+  div[class="page-hero"][style*="grid-template-columns"] {
+    display: block !important;
+  }
+
+  /* ── Buttons: full-width on narrow screens ── */
+  .btn-primary, .btn-secondary { display: block; text-align: center; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { display: inline-block; width: auto; }
+
+  /* ── CTA on homepage ── */
+  .cta-banner .btn-primary,
+  .cta-banner .btn-secondary { display: block; text-align: center; box-sizing: border-box; }
+}

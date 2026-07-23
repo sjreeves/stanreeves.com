@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Five Most Common Bitcoin Custody Mistakes | Stan Reeves, PhD</title>
+<link rel="icon" type="image/svg+xml" href="../favicon-direction-a.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #F7F3ED;
+  --bg-subtle:    #F0E8D8;
+  --bg-dark:      #1C1712;
+  --bg-dark-alt:  #2A211A;
+  --text:         #1C1712;
+  --text-muted:   #3D3328;
+  --text-faint:   #8B7060;
+  --text-inv:     #F7F3ED;
+  --accent:       #8B6914;
+  --accent-light: #C4A35A;
+  --accent-muted: #D4C4A8;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'DM Sans', system-ui, sans-serif;
+  --font-m: 'DM Mono', 'Courier New', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-b); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--accent-muted);
+  padding: 0 56px; display: flex; align-items: center; justify-content: space-between; height: 68px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-logo-mark { width: 36px; height: 36px; background: var(--bg-dark); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+.nav-logo-mark span { font-family: var(--font-d); font-size: 15px; color: var(--accent-light); font-weight: 500; }
+.nav-brand-name { font-family: var(--font-d); font-size: 20px; font-weight: 300; color: var(--text); letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 15px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; }
+.nav-links a:hover { color: var(--accent); }
+/* ── Nav dropdown ── */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-trigger { background: none; border: none; cursor: pointer; font-family: var(--font-b); font-size: 15px; color: var(--text-muted); letter-spacing: 0.03em; padding: 0; transition: color 0.2s; }
+.nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { color: var(--accent); }
+.nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--bg); border: 1px solid var(--accent-muted); min-width: 230px; padding: 8px 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 10px 20px; font-family: var(--font-b); font-size: 14px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s, background 0.2s; }
+.nav-dropdown-menu a:hover { color: var(--accent); background: rgba(139,105,20,0.06); }
+/* ── Mobile dropdown ── */
+.mob-dropdown-trigger { background: none; border: none; cursor: pointer; display: block; width: 100%; text-align: left; font-family: var(--font-b); font-size: 16px; color: var(--text-muted); padding: 14px 28px; text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.mob-dropdown-trigger:hover { color: var(--accent); }
+.mob-dropdown-menu { display: none; background: rgba(139,105,20,0.04); border-left: 2px solid var(--accent-muted); margin: 0 28px 4px; }
+.mob-dropdown.open .mob-dropdown-menu { display: block; }
+.mob-dropdown-menu a { display: block; padding: 10px 16px; font-family: var(--font-b); font-size: 14px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; }
+.mob-dropdown-menu a:hover { color: var(--accent); }
+.nav-cta { background: var(--bg-dark); color: var(--text-inv); border: none; padding: 10px 22px; font-family: var(--font-b); font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+
+/* ── Article layout ── */
+.article-wrap {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0 96px;
+}
+
+/* ── Article header (full width) ── */
+.article-header {
+  grid-column: 1 / -1;
+  padding: 64px 64px 48px;
+  border-bottom: 1px solid var(--accent-muted);
+}
+.article-tags { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.article-tag { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); background: var(--bg-subtle); padding: 4px 12px; }
+.article-meta { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.12em; color: var(--text-faint); }
+.article-title { font-family: var(--font-d); font-size: 64px; font-weight: 300; line-height: 1.06; color: var(--text); max-width: 780px; margin-bottom: 20px; }
+.article-deck { font-size: 19px; line-height: 1.65; color: var(--text-muted); max-width: 640px; font-weight: 300; margin-bottom: 28px; }
+.article-byline { display: flex; align-items: center; gap: 14px; }
+.article-byline-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--accent-muted); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; }
+.article-byline-avatar span { font-family: var(--font-d); font-size: 13px; color: var(--accent-light); font-weight: 500; }
+.article-byline-text { display: flex; flex-direction: column; gap: 2px; }
+.article-byline-name { font-size: 15px; font-weight: 500; color: var(--text); }
+.article-byline-detail { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.12em; color: var(--text-faint); }
+
+/* ── Main content ── */
+.article-body { padding: 52px 64px 0; }
+
+.prose p { font-size: 17px; line-height: 1.78; color: var(--text-muted); font-weight: 300; margin-bottom: 22px; }
+.prose strong { font-weight: 500; color: var(--text); }
+
+.mistake-block { margin: 44px 0; }
+.mistake-number { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.mistake-title { font-family: var(--font-d); font-size: 36px; font-weight: 400; color: var(--text); margin-bottom: 16px; line-height: 1.15; }
+.mistake-divider { width: 40px; height: 1px; background: var(--accent); margin-bottom: 18px; }
+
+/* Pull quote */
+.pullquote {
+  margin: 36px 0; padding: 22px 0 22px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-subtle);
+}
+.pullquote p { font-family: var(--font-d); font-size: 26px; font-style: italic; color: var(--text); line-height: 1.45; margin: 0; font-weight: 400; }
+.pullquote cite { display: block; font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 12px; font-style: normal; }
+
+/* What to do box */
+.what-to-do { background: var(--bg-subtle); border-left: 3px solid var(--accent); padding: 18px 20px; margin: 20px 0; }
+.what-to-do-label { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.what-to-do p { font-size: 16px; line-height: 1.65; color: var(--text-muted); font-weight: 300; margin: 0; }
+
+/* Architecture diagram */
+.diagram { border: 1px solid var(--accent-muted); padding: 24px 28px; margin: 32px 0; }
+.diagram-label { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.diagram-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 0; row-gap: 10px; }
+.diagram-node { border: 1px solid var(--accent-muted); padding: 10px 16px; background: var(--bg); text-align: center; flex: none; }
+.diagram-node.primary { background: var(--bg-dark); border-color: var(--accent); }
+.diagram-node span { font-family: var(--font-m); font-size: 12px; color: var(--text); line-height: 1.4; white-space: pre-line; }
+.diagram-node.primary span { color: var(--accent-light); }
+.diagram-arrow { font-family: var(--font-m); font-size: 16px; color: var(--accent-muted); padding: 0 6px; }
+.diagram-caption { font-family: var(--font-b); font-size: 13px; color: var(--accent); font-style: italic; font-weight: 300; margin-top: 14px; }
+
+/* Inheritance flow */
+.flow-diagram { padding: 20px 0; margin: 24px 0; }
+.flow-step { display: flex; gap: 0; align-items: stretch; }
+.flow-step-line { display: flex; flex-direction: column; align-items: center; width: 28px; flex-shrink: 0; }
+.flow-step-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent-muted); margin-top: 4px; flex-shrink: 0; }
+.flow-step-dot.active { background: var(--accent); }
+.flow-step-connector { width: 1px; flex: 1; background: var(--accent-muted); margin-top: 4px; }
+.flow-step-content { padding-bottom: 22px; padding-left: 12px; }
+.flow-step-name { font-family: var(--font-m); font-size: 10px; font-weight: 500; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; margin-bottom: 4px; }
+.flow-step-note { font-size: 13px; color: var(--text-faint); line-height: 1.5; font-weight: 300; }
+
+/* Quick ref box */
+.quick-ref { background: var(--bg-dark); padding: 28px 32px; margin: 36px 0; }
+.quick-ref-label { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 16px; }
+.quick-ref-item { display: flex; gap: 16px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(139,105,20,0.15); }
+.quick-ref-item:last-child { border-bottom: none; padding-bottom: 0; }
+.quick-ref-num { font-family: var(--font-m); font-size: 11px; color: var(--accent-light); min-width: 22px; font-weight: 500; }
+.quick-ref-text { font-size: 16px; color: var(--text-inv); font-weight: 300; line-height: 1.4; }
+
+/* ── Sidebar ── */
+.article-sidebar { padding: 52px 40px 0 36px; border-left: 1px solid var(--accent-muted); }
+.sidebar-section { margin-bottom: 40px; }
+.sidebar-label { font-family: var(--font-m); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+
+/* Author card */
+.author-card { border: 1px solid var(--accent-muted); padding: 20px; }
+.author-card-photo { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--accent-muted); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.author-card-photo span { font-family: var(--font-d); font-size: 16px; color: var(--accent-light); font-weight: 500; }
+.author-card-name { font-family: var(--font-d); font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+.author-card-title { font-family: var(--font-m); font-size: 10px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; line-height: 1.5; }
+.author-card-bio { font-size: 14px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+.author-card-link { display: inline-block; margin-top: 12px; font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+
+/* ToC */
+.toc { border: 1px solid var(--accent-muted); padding: 20px; }
+.toc-item { display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--accent-muted); cursor: pointer; text-decoration: none; }
+.toc-item:last-child { border-bottom: none; padding-bottom: 0; }
+.toc-item:hover .toc-item-title { color: var(--accent); }
+.toc-num { font-family: var(--font-m); font-size: 9px; color: var(--accent); min-width: 18px; }
+.toc-item-title { font-size: 14px; color: var(--text-muted); line-height: 1.35; font-weight: 300; }
+
+/* Consultation CTA sidebar */
+.sidebar-cta { background: var(--bg-dark); padding: 22px; }
+.sidebar-cta h4 { font-family: var(--font-d); font-size: 20px; font-weight: 300; color: var(--text-inv); margin-bottom: 10px; line-height: 1.3; }
+.sidebar-cta p { font-size: 14px; color: #A89070; line-height: 1.55; font-weight: 300; margin-bottom: 16px; }
+.sidebar-cta a { display: block; background: var(--accent); color: var(--text-inv); padding: 11px 16px; font-family: var(--font-b); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; text-align: center; }
+
+/* Related */
+.related-item { padding: 12px 0; border-bottom: 1px solid var(--accent-muted); }
+.related-item:last-child { border-bottom: none; }
+.related-item a { font-family: var(--font-d); font-size: 17px; font-weight: 400; color: var(--text); text-decoration: none; line-height: 1.3; display: block; margin-bottom: 4px; }
+.related-item a:hover { color: var(--accent); }
+.related-item span { font-family: var(--font-m); font-size: 10px; letter-spacing: 0.1em; color: var(--text-faint); }
+
+/* Footer CTA */
+.article-footer-cta { grid-column: 1 / -1; background: var(--bg-dark); padding: 56px 64px; display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: 64px; }
+.article-footer-cta h2 { font-family: var(--font-d); font-size: 40px; font-weight: 300; color: var(--text-inv); line-height: 1.1; max-width: 480px; }
+.article-footer-cta a { display: inline-block; background: var(--accent); color: var(--text-inv); padding: 14px 28px; font-family: var(--font-b); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; flex-shrink: 0; }
+</style>
+<link rel="stylesheet" href="../pe-switch.css">
+<link rel="stylesheet" href="../mobile.css">
+<script src="../mobile-nav.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">
+    <div class="nav-logo-mark"><span>SR</span></div>
+    <span class="nav-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.7;">PhD<span class="pe-cred">, PE</span></span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="../about.html">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">Work With Me &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="../individuals.html">Individuals &amp; Families</a>
+        <a href="../attorneys.html">Estate Attorneys &amp; CLE</a>
+        <a href="../advisors.html">Financial Advisors</a>
+        <a href="../institutions.html">Institutions</a>
+      </div>
+    </div>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <a class="nav-cta" href="../contact.html">Schedule a Consultation</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/">Home</a>
+  <a href="../about.html">About</a>
+  <div class="mob-dropdown">
+    <button class="mob-dropdown-trigger">Work With Me &#9662;</button>
+    <div class="mob-dropdown-menu">
+      <a href="../individuals.html">Individuals &amp; Families</a>
+      <a href="../attorneys.html">Estate Attorneys &amp; CLE</a>
+      <a href="../advisors.html">Financial Advisors</a>
+      <a href="../institutions.html">Institutions</a>
+    </div>
+  </div>
+  <a href="../resources.html">Resources</a>
+  <a href="../contact.html">Contact</a>
+  <a class="nav-cta-mobile" href="../contact.html">Schedule a Consultation</a>
+</div>
+
+<div class="article-wrap">
+
+  <!-- Header -->
+  <div class="article-header">
+    <div class="article-tags">
+      <span class="article-tag">For Individuals</span>
+      <span class="article-meta">· April 2026 · 10 min read</span>
+    </div>
+    <h1 class="article-title">The Five Most Common Bitcoin Custody Mistakes — and How to Avoid Them</h1>
+    <p class="article-deck">The errors that lead to permanent bitcoin loss are remarkably consistent. If you self-custody bitcoin, you need to know whether you're making any of them.</p>
+    <div class="article-byline">
+      <div class="article-byline-avatar"><span>SR</span></div>
+      <div class="article-byline-text">
+        <div class="article-byline-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="article-byline-detail">Professor Emeritus · Auburn University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <main class="article-body">
+    <div class="prose">
+      <p>Self-custody is the right approach for serious bitcoin holders. Holding your own keys means no counterparty risk, no exchange insolvency risk, and no institutional freeze. But self-custody is also the approach that demands the most from the holder — and the one where errors are permanent. There is no "forgot my password" recovery path for a lost seed phrase. There is no customer service line. There is no institutional backstop.</p>
+      <p>In working with bitcoin holders on custody architecture and inheritance planning, I encounter the same failure modes repeatedly. These are not exotic scenarios or edge cases. They are the norm — and they are entirely preventable.</p>
+    </div>
+
+    <!-- Custody architecture diagram -->
+    <div class="diagram">
+      <div class="diagram-label">Custody Architecture — How It Works</div>
+      <div class="diagram-flow">
+        <div class="diagram-node primary"><span>Seed Phrase&#10;(24 words)</span></div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node"><span>Hardware&#10;Device</span></div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node"><span>Bitcoin&#10;Holdings</span></div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node"><span>Inheritance&#10;Plan</span></div>
+      </div>
+      <div class="diagram-caption">The seed phrase controls everything. The device is a signing tool — not a backup. Without the seed phrase, a failed device means permanent loss.</div>
+    </div>
+
+    <!-- Mistake 1 -->
+    <div class="mistake-block">
+      <div class="mistake-number">Mistake 01</div>
+      <div class="mistake-title">Treating the Hardware Device as the Backup</div>
+      <div class="mistake-divider"></div>
+      <div class="prose">
+        <p>This is the most common and most consequential misunderstanding in bitcoin self-custody. The hardware wallet — whether a Ledger, a Trezor, a Coldcard, or any other — is not your bitcoin. It is a signing device. Your bitcoin is controlled by a private key, encoded in your seed phrase. The device is simply a convenient, secure way to use that key without exposing it to internet-connected computers.</p>
+        <p>Hardware devices fail. They are lost, stolen, damaged, or simply stop functioning. All of these events are routine and entirely recoverable — as long as you have your seed phrase. Without it, a failed device means lost bitcoin. Permanently.</p>
+      </div>
+      <div class="what-to-do">
+        <div class="what-to-do-label">What to do instead</div>
+        <p>Understand clearly that your seed phrase is the actual backup. Generate it, write it down (or stamp it on a metal plate), verify it, and store it securely — in a location separate from the device, protected from fire and water, and accessible to whoever should inherit your bitcoin. Never store the seed phrase digitally.</p>
+      </div>
+    </div>
+
+    <!-- Mistake 2 -->
+    <div class="mistake-block">
+      <div class="mistake-number">Mistake 02</div>
+      <div class="mistake-title">A Single Point of Failure Anywhere in the System</div>
+      <div class="mistake-divider"></div>
+      <div class="prose">
+        <p>A custody architecture with a single point of failure is not secure custody — it is a single accident, theft, or disaster away from total loss. Single points of failure appear in multiple places: a single device with no seed phrase backup; a seed phrase in one location that could burn; a passphrase held only in memory; a multisig where all keys are stored together.</p>
+        <p>Each of these configurations violates the basic principle of resilient custody: no single event should be sufficient to cause permanent loss.</p>
+      </div>
+      <div class="what-to-do">
+        <div class="what-to-do-label">What to do instead</div>
+        <p>Map out every single point of failure in your current setup. For each one, ask: if this fails, is my bitcoin gone? Geographically distributed seed phrase backups — in at least two separate locations — are the minimum for serious holdings.</p>
+      </div>
+    </div>
+
+    <!-- Mistake 3 -->
+    <div class="mistake-block">
+      <div class="mistake-number">Mistake 03</div>
+      <div class="mistake-title">No Inheritance Plan</div>
+      <div class="mistake-divider"></div>
+      <div class="prose">
+        <p>A holder with a good custody setup who has not documented an inheritance procedure has built something that will work perfectly during their lifetime and fail completely at death. Consider what your heirs would face if you died tonight. Do they know your bitcoin exists? Do they know where the hardware device is? Do they know what a seed phrase is?</p>
+      </div>
+      <!-- Inheritance flow diagram -->
+      <div class="diagram">
+        <div class="diagram-label">Inheritance Flow — What Needs to Exist</div>
+        <div class="flow-diagram">
+          <div class="flow-step">
+            <div class="flow-step-line"><div class="flow-step-dot active"></div><div class="flow-step-connector"></div></div>
+            <div class="flow-step-content">
+              <div class="flow-step-name">Holder</div>
+              <div class="flow-step-note">Creates seed phrase backup, passphrase doc, and inheritance letter</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-line"><div class="flow-step-dot"></div><div class="flow-step-connector"></div></div>
+            <div class="flow-step-content">
+              <div class="flow-step-name">Estate Documents</div>
+              <div class="flow-step-note">Custody letter integrated alongside attorney's trust and will</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-line"><div class="flow-step-dot"></div><div class="flow-step-connector"></div></div>
+            <div class="flow-step-content">
+              <div class="flow-step-name">Executor / Trustee</div>
+              <div class="flow-step-note">Knows where documentation is and who to call for guidance</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-line"><div class="flow-step-dot"></div></div>
+            <div class="flow-step-content">
+              <div class="flow-step-name">Heirs</div>
+              <div class="flow-step-note">Follow documented step-by-step procedure to access holdings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="what-to-do">
+        <div class="what-to-do-label">What to do instead</div>
+        <p>Create an inheritance document that answers every one of those questions — where the bitcoin is, where the hardware device is, where the seed phrase is, and step-by-step instructions a non-technical heir can follow. Store it where your executor will find it.</p>
+      </div>
+    </div>
+
+    <!-- Mistake 4 -->
+    <div class="mistake-block">
+      <div class="mistake-number">Mistake 04</div>
+      <div class="mistake-title">A Passphrase That Lives Only in Your Head</div>
+      <div class="mistake-divider"></div>
+      <div class="prose">
+        <p>A passphrase — sometimes called a "25th word" — is a powerful security tool. Without it, even someone who finds the seed phrase cannot access the bitcoin. It also introduces a catastrophic failure mode I encounter regularly: the passphrase exists only in the holder's memory, and the holder dies, becomes incapacitated, or simply forgets it. The bitcoin is permanently inaccessible — even to the holder.</p>
+      </div>
+      <div class="what-to-do">
+        <div class="what-to-do-label">What to do instead</div>
+        <p>If you use a passphrase, it must be documented and stored separately from the seed phrase, accessible to heirs under appropriate conditions, and included in your inheritance documentation. Treat the passphrase with the same documentation discipline as the seed phrase itself.</p>
+      </div>
+    </div>
+
+    <!-- Mistake 5 -->
+    <div class="mistake-block">
+      <div class="mistake-number">Mistake 05</div>
+      <div class="mistake-title">Custody Architecture That Doesn't Match the Holding Size</div>
+      <div class="mistake-divider"></div>
+      <div class="prose">
+        <p>The problem occurs in both directions: under-engineering for significant holdings, and over-engineering to the point that the system cannot be used or recovered. A single hardware device with a handwritten seed phrase in a desk drawer is adequate for small amounts. For significant holdings, it is not. Equally, a complex multisig arrangement that neither the holder nor their heirs can navigate in practice provides no real security.</p>
+      </div>
+      <div class="what-to-do">
+        <div class="what-to-do-label">What to do instead</div>
+        <p>Match your custody architecture to your holding size, risk tolerance, and the realistic technical capabilities of you and your heirs. For holdings above a meaningful threshold, this question should be determined by a custody specialist, not improvised based on online forums.</p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pullquote">
+      <p>"Self-custody is a commitment that extends beyond your own lifetime. The question is not just whether you can access your bitcoin — it is whether the people you care about can access it when you cannot."</p>
+      <cite>Stan Reeves</cite>
+    </div>
+
+    <!-- Quick reference -->
+    <div class="quick-ref">
+      <div class="quick-ref-label">Five Mistakes — Quick Reference</div>
+      <div class="quick-ref-item"><div class="quick-ref-num">01</div><div class="quick-ref-text">Treating the hardware device as the backup</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">02</div><div class="quick-ref-text">A single point of failure anywhere in the system</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">03</div><div class="quick-ref-text">No inheritance plan</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">04</div><div class="quick-ref-text">A passphrase that lives only in your head</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">05</div><div class="quick-ref-text">Custody architecture that doesn't match the holding size</div></div>
+    </div>
+
+    <div class="prose">
+      <p>The window to address these gaps is before any of these events occur. The planning required is not technically complex — it is a matter of documentation, discipline, and occasionally specialist guidance to ensure the architecture is appropriate for the holding size and family situation.</p>
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="article-sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">About the Author</div>
+      <div class="author-card">
+        <div class="author-card-photo"><span>SR</span></div>
+        <div class="author-card-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="author-card-title">Professor Emeritus<br>Dept. of Electrical &amp; Computer Engineering<br>Auburn University</div>
+        <div class="author-card-bio">Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</div>
+        <a class="author-card-link" href="../about.html">Read full bio →</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">In This Article</div>
+      <div class="toc">
+        <a class="toc-item" href="#"><span class="toc-num">01</span><span class="toc-item-title">Treating the device as the backup</span></a>
+        <a class="toc-item" href="#"><span class="toc-num">02</span><span class="toc-item-title">Single point of failure</span></a>
+        <a class="toc-item" href="#"><span class="toc-num">03</span><span class="toc-item-title">No inheritance plan</span></a>
+        <a class="toc-item" href="#"><span class="toc-num">04</span><span class="toc-item-title">Memory-only passphrase</span></a>
+        <a class="toc-item" href="#"><span class="toc-num">05</span><span class="toc-item-title">Architecture/holding mismatch</span></a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-cta">
+        <h4>Schedule a Custody Review</h4>
+        <p>Recognize any of these mistakes in your current setup? A custody review is a structured assessment of what you have and what needs to change.</p>
+        <a href="../contact.html">Schedule a Consultation</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Related Reading</div>
+      <div class="related-item">
+        <a href="bitcoin-inheritance-attorneys.html">What Estate Attorneys Need to Know About Bitcoin Inheritance</a>
+        <span>For Attorneys · April 2026</span>
+      </div>
+      <div class="related-item">
+        <a href="churches.html">Bitcoin Self-Custody for Churches</a>
+        <span>For Churches · April 2026</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- Footer CTA -->
+  <div class="article-footer-cta">
+    <h2>Don't leave your bitcoin to chance.</h2>
+    <a href="../contact.html">Schedule a Consultation</a>
+  </div>
+
+</div>
+</body>
+</html>
+   

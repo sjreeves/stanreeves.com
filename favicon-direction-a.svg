@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  
+  <rect width="32" height="32" fill="#1C1712"></rect>
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#8B6914" stroke-width="0.8"></rect>
+  <text x="16" y="23" font-family="Cormorant Garamond, Georgia, serif" font-size="17" font-weight="500" fill="#C4A35A" text-anchor="middle">SR</text>
+</svg>

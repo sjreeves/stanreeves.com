@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Self-Custody for Churches: A Practical Guide | Stan Reeves, PhD</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon-direction-a.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#F7F3ED; --bg-subtle:#F0E8D8; --bg-dark:#1C1712; --bg-dark-alt:#2A211A;
+  --text:#1C1712; --text-muted:#3D3328; --text-faint:#8B7060; --text-inv:#F7F3ED;
+  --accent:#8B6914; --accent-light:#C4A35A; --accent-muted:#D4C4A8;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'DM Mono','Courier New',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;text-wrap:pretty;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--accent-muted);padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{width:36px;height:36px;background:var(--bg-dark);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-mark span{font-family:var(--font-d);font-size:15px;color:var(--accent-light);font-weight:500;}
+.nav-brand-name{font-family:var(--font-d);font-size:20px;font-weight:300;color:var(--text);letter-spacing:0.02em;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:15px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.nav-links a:hover{color:var(--accent);}
+/* nav dropdown */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{background:none;border:none;cursor:pointer;font-family:var(--font-b);font-size:15px;color:var(--text-muted);letter-spacing:0.03em;padding:0;transition:color 0.2s;}
+.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{color:var(--accent);}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--bg);border:1px solid var(--accent-muted);min-width:230px;padding:8px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:10px 20px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s,background 0.2s;}
+.nav-dropdown-menu a:hover{color:var(--accent);background:rgba(139,105,20,0.06);}
+.mob-dropdown-trigger{background:none;border:none;cursor:pointer;display:block;width:100%;text-align:left;font-family:var(--font-b);font-size:16px;color:var(--text-muted);padding:14px 28px;text-decoration:none;letter-spacing:0.03em;transition:color 0.2s;}
+.mob-dropdown-trigger:hover{color:var(--accent);}
+.mob-dropdown-menu{display:none;background:rgba(139,105,20,0.04);border-left:2px solid var(--accent-muted);margin:0 28px 4px;}
+.mob-dropdown.open .mob-dropdown-menu{display:block;}
+.mob-dropdown-menu a{display:block;padding:10px 16px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.mob-dropdown-menu a:hover{color:var(--accent);}
+.nav-cta{background:var(--bg-dark);color:var(--text-inv);border:none;padding:10px 22px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent);}
+.section-label{font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.btn-primary{display:inline-block;background:var(--bg-dark);color:var(--text-inv);border:none;padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.2s;}
+.btn-primary:hover{background:var(--accent);}
+.btn-secondary{display:inline-block;background:transparent;color:var(--accent);border:1px solid var(--accent);padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;}
+footer{background:var(--bg-dark);color:var(--text-inv);border-top:1px solid rgba(139,105,20,0.3);padding:56px 64px 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand{display:flex;flex-direction:column;gap:16px;}
+.footer-brand-name{font-family:var(--font-d);font-size:24px;font-weight:300;}
+.footer-tagline{font-size:15px;color:#A89070;line-height:1.6;font-weight:300;max-width:280px;}
+.footer-socials{display:flex;gap:16px;margin-top:8px;}
+.footer-socials a{font-family:var(--font-m);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-light);text-decoration:none;opacity:0.8;}
+.footer-col h4{font-family:var(--font-m);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px;}
+.footer-col a{display:block;font-size:15px;color:#A89070;text-decoration:none;margin-bottom:10px;font-weight:300;}
+.footer-col a:hover{color:var(--text-inv);}
+.footer-bottom{border-top:1px solid rgba(139,105,20,0.2);padding-top:24px;display:flex;justify-content:space-between;}
+.footer-copy{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:#5A4A38;}
+</style>
+<link rel="stylesheet" href="../../pe-switch.css">
+<link rel="stylesheet" href="../../mobile.css">
+<script src="../../mobile-nav.js" defer></script>
+</head>
+<body><style>
+.article-wrap{display:grid;grid-template-columns:1fr 300px;gap:0;max-width:1200px;margin:0 auto;padding:0 0 96px;}
+.article-header{grid-column:1/-1;padding:64px 64px 48px;border-bottom:1px solid var(--accent-muted);}
+.article-tag{font-family:var(--font-m);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--bg-subtle);padding:4px 12px;}
+.article-meta{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:var(--text-faint);}
+.article-title{font-family:var(--font-d);font-size:64px;font-weight:300;line-height:1.06;color:var(--text);max-width:780px;margin-bottom:20px;}
+.article-deck{font-size:19px;line-height:1.65;color:var(--text-muted);max-width:640px;font-weight:300;margin-bottom:28px;}
+.article-byline{display:flex;align-items:center;gap:14px;}
+.byline-avatar{width:40px;height:40px;border-radius:50%;border:1px solid var(--accent-muted);overflow:hidden;}
+.byline-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.byline-name{font-size:15px;font-weight:500;color:var(--text);}
+.byline-detail{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:var(--text-faint);}
+.article-body{padding:52px 64px 0;}
+.prose p{font-size:17px;line-height:1.78;color:var(--text-muted);font-weight:300;margin-bottom:22px;}
+.prose strong{font-weight:500;color:var(--text);}
+.prose em{font-style:italic;}
+.prose h2{font-family:var(--font-d);font-size:36px;font-weight:400;color:var(--text);margin:48px 0 18px;line-height:1.12;}
+.prose h3{font-family:var(--font-d);font-size:26px;font-weight:400;color:var(--text);margin:32px 0 12px;}
+.prose ul{padding-left:0;list-style:none;margin-bottom:22px;}
+.prose ul li{font-size:17px;line-height:1.65;color:var(--text-muted);font-weight:300;padding:6px 0 6px 20px;border-left:2px solid var(--accent-muted);margin-bottom:6px;}
+.pullquote{margin:36px 0;padding:22px 0 22px 24px;border-left:3px solid var(--accent);background:var(--bg-subtle);}
+.pullquote p{font-family:var(--font-d);font-size:26px;font-style:italic;color:var(--text);line-height:1.45;margin:0;font-weight:400;}
+.pullquote cite{display:block;font-family:var(--font-m);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-top:12px;font-style:normal;}
+.key-term{background:var(--bg-dark);color:var(--accent-light);padding:1px 6px;font-family:var(--font-m);font-size:0.88em;font-weight:400;}
+.callout{background:var(--bg-subtle);border-left:3px solid var(--accent);padding:20px 22px;margin:28px 0;}
+.callout-label{font-family:var(--font-m);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.callout p{font-size:16px;line-height:1.65;color:var(--text-muted);font-weight:300;margin:0;}
+.further-reading{border:1px solid var(--accent-muted);padding:24px 28px;margin:36px 0;}
+.further-reading-label{font-family:var(--font-m);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.further-reading a{font-family:var(--font-d);font-size:18px;color:var(--text);text-decoration:none;line-height:1.4;}
+.further-reading a:hover{color:var(--accent);}
+.further-reading p{font-size:14px;color:var(--text-muted);margin-top:8px;font-weight:300;line-height:1.6;}
+.article-sidebar{padding:52px 40px 0 36px;border-left:1px solid var(--accent-muted);}
+.sidebar-section{margin-bottom:36px;}
+.sidebar-label{font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.author-card{border:1px solid var(--accent-muted);padding:20px;}
+.author-photo{width:52px;height:52px;border-radius:50%;overflow:hidden;border:1px solid var(--accent-muted);margin-bottom:12px;}
+.author-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.author-name{font-family:var(--font-d);font-size:18px;font-weight:400;margin-bottom:4px;}
+.author-title{font-family:var(--font-m);font-size:10px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;line-height:1.5;}
+.author-bio{font-size:14px;color:var(--text-muted);line-height:1.6;font-weight:300;}
+.author-link{display:inline-block;margin-top:12px;font-family:var(--font-m);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.sidebar-cta{background:var(--bg-dark);padding:22px;}
+.sidebar-cta h4{font-family:var(--font-d);font-size:20px;font-weight:300;color:var(--text-inv);margin-bottom:10px;line-height:1.3;}
+.sidebar-cta p{font-size:14px;color:#A89070;line-height:1.55;font-weight:300;margin-bottom:16px;}
+.sidebar-cta a{display:block;background:var(--accent);color:var(--text-inv);padding:11px 16px;font-family:var(--font-b);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;margin-bottom:8px;}
+.related-item{padding:12px 0;border-bottom:1px solid var(--accent-muted);}
+.related-item:last-child{border-bottom:none;}
+.related-item a{font-family:var(--font-d);font-size:17px;font-weight:400;color:var(--text);text-decoration:none;line-height:1.3;display:block;margin-bottom:4px;}
+.related-item a:hover{color:var(--accent);}
+.related-item span{font-family:var(--font-m);font-size:10px;letter-spacing:0.1em;color:var(--text-faint);}
+.article-footer-cta{grid-column:1/-1;background:var(--bg-dark);padding:56px 64px;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:64px;}
+.article-footer-cta h2{font-family:var(--font-d);font-size:40px;font-weight:300;color:var(--text-inv);line-height:1.1;max-width:520px;}
+</style><nav>
+  <a class="nav-brand" href="/">
+    <div class="nav-logo-mark"><span>SR</span></div>
+    <span class="nav-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.7;">PhD<span class="pe-cred">, PE</span></span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="../../about">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">Work With Me &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="../../individuals">Individuals &amp; Families</a>
+        <a href="../../attorneys">Estate Attorneys &amp; CLE</a>
+        <a href="../../advisors">Financial Advisors</a>
+        <a href="../../institutions">Institutions</a>
+      </div>
+    </div>
+    <a href="../../resources">Resources</a>
+    <a href="../../contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="../../contact">Schedule a Consultation</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/">Home</a>
+  <a href="../../about">About</a>
+  <div class="mob-dropdown">
+    <button class="mob-dropdown-trigger">Work With Me &#9662;</button>
+    <div class="mob-dropdown-menu">
+      <a href="../../individuals">Individuals &amp; Families</a>
+      <a href="../../attorneys">Estate Attorneys &amp; CLE</a>
+      <a href="../../advisors">Financial Advisors</a>
+      <a href="../../institutions">Institutions</a>
+    </div>
+  </div>
+  <a href="../../resources">Resources</a>
+  <a href="../../contact">Contact</a>
+  <a class="nav-cta-mobile" href="../../contact">Schedule a Consultation</a>
+</div>
+<div class="article-wrap">
+
+  <div class="article-header">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;">
+      <span class="article-tag">For Churches</span>
+      <span class="article-meta">· April 2026 · 10 min read</span>
+    </div>
+    <h1 class="article-title">Bitcoin Self-Custody for Churches: A Practical Guide</h1>
+    <p class="article-deck">The monetary properties that make bitcoin worth holding for a church — censorship resistance, protection against confiscation, independence from institutional failure — exist only in self-custody. Most churches that hold bitcoin have not addressed this.</p>
+    <div class="article-byline">
+      <div class="byline-avatar"><img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves"></div>
+      <div>
+        <div class="byline-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="byline-detail">Professor Emeritus · Auburn University · Church Elder</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="article-body">
+    <div class="prose">
+      <p>In Luke 16, Jesus commended the dishonest manager not for his dishonesty but for his shrewdness — for thinking carefully about his situation and acting wisely in response to it. Then he drew the contrast that stings: "For the sons of this world are more shrewd in dealing with their own generation than the sons of light." The rebuke applies to the church's relationship with money today. Christians who are not thinking carefully about our monetary moment are leaving that rebuke unanswered.</p>
+      <p>Most churches define financial stewardship as a checking account at the local bank, reserves in a money market fund, and expenses paid through a debit card provider that could terminate the relationship tomorrow. That approach may no longer be adequate in a monetary environment defined by persistent inflation, growing institutional fragility, and the emerging willingness of financial platforms to target organizations for their ideology.</p>
+
+      <h2>Why Bitcoin Deserves the Church's Attention</h2>
+      <p>Our monetary system is broken in ways that directly threaten the church's mission. The Federal Reserve can expand the money supply at will, gradually eroding the value of every dollar your church holds in savings. Sound money has always required two properties: <strong>scarcity</strong> — it must be hard to create, so no one can dilute its value — and <strong>permissionlessness</strong> — it must be truly yours to use, without someone else's approval. Our current money fails both tests.</p>
+      <p>Governments and financial corporations are weaponizing control over bank accounts and payment networks. The deplatforming of Christian ministries — accounts frozen, payment processors terminated — is not a hypothetical. It is already happening. Bitcoin addresses these failures directly. Its total supply is fixed at 21 million units, mathematically enforced, with no central authority capable of inflating it away.</p>
+
+      <h2>The Decision Is Only Half Made Without Self-Custody</h2>
+      <p>Holding bitcoin is not like holding funds in a money market account. The monetary properties that make bitcoin worth holding — censorship resistance, protection against confiscation, independence from institutional failure — exist only in self-custody.</p>
+      <p>A church that holds bitcoin on an exchange does not actually hold bitcoin. It holds an IOU from the exchange — a promise to deliver bitcoin if and when the church asks for it. That promise is subject to exchange insolvency, hacking, mismanagement, regulatory freeze, and account closure at the platform's discretion.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The central principle</div>
+      <p><em>Not your keys, not your coins.</em> A church that has worked through the theological and financial case for bitcoin and then holds that bitcoin on an exchange has chosen bitcoin's price volatility without bitcoin's essential properties. Self-custody is not the advanced option — it is the only option consistent with all the reasons a church would hold bitcoin in the first place.</p>
+    </div>
+
+    <div class="prose">
+      <h2>What Self-Custody Actually Means</h2>
+      <p>Your bitcoin is controlled by a <span class="key-term">private key</span> — a cryptographic secret. That private key is encoded in a <span class="key-term">seed phrase</span>: a sequence of 12 or 24 ordinary English words. Whoever holds the seed phrase controls the bitcoin. A <span class="key-term">hardware wallet</span> is a physical device that stores the private key in secure hardware and signs transactions without ever exposing the key to an internet-connected computer.</p>
+      <p>In self-custody, the church holds the hardware device and the seed phrase backup. No institution holds a copy. This is what makes the bitcoin genuinely the church's — and genuinely protected from institutional interference.</p>
+
+      <h2>Why Church Self-Custody Differs from Individual Self-Custody</h2>
+      <p>A church is not a single person. It has multiple leaders, a governance structure, a treasurer, a finance committee — and any of these people may come and go. A custody architecture built around a single individual — one hardware device, one seed phrase, known to one person — is catastrophically misaligned with how a church actually operates.</p>
+      <p>Consider what single-signer custody looks like in practice: a hardware wallet held by the treasurer, the seed phrase known only to that individual. When that treasurer leaves the church, retires, or dies, what happens to the bitcoin? This is the most common failure mode for churches that hold bitcoin without having thought through their custody architecture. It is also entirely preventable.</p>
+
+      <h2>The Right Architecture: Multisig</h2>
+      <p>The appropriate custody architecture for a church is <span class="key-term">multisig</span> (multi-signature): a setup that requires more than one key to authorize a transaction. The most common configurations are 2-of-3 (any two of three keyholders must sign) or 3-of-5 (any three of five must sign).</p>
+      <p>For a church, a well-implemented multisig arrangement provides three things that single-signer custody cannot:</p>
+      <ul>
+        <li><strong>No single point of failure.</strong> No single lost, stolen, or inaccessible key compromises the funds. A treasurer who moves away, a pastor who dies unexpectedly, an elder who loses his hardware device — none of these events results in lost bitcoin.</li>
+        <li><strong>No single point of control.</strong> No individual can move the church's bitcoin unilaterally. The same principle that requires two signatures on a church check should govern bitcoin custody.</li>
+        <li><strong>Resilience across leadership transitions.</strong> When a keyholder leaves, the bitcoin can be moved to a new multisig address with an updated keyset — a straightforward on-chain transaction requiring only the existing quorum of signers.</li>
+      </ul>
+
+      <h2>Who Should Hold the Keys?</h2>
+      <p>Key distribution in a church multisig should mirror the church's actual governance structure. Keys distributed among church officers is a natural fit. The principle is that custody authority should reside where governance authority already resides — not in a single individual by default or convenience.</p>
+      <p>Several rules should govern key distribution: keyholders should be <strong>geographically distributed</strong>; <strong>no single individual should hold more than one key</strong>; and consider whether at least one key should be held by an <strong>external trusted party</strong> — a bitcoin custody specialist, a bitcoin-aware attorney, or a trusted individual at a like-minded church — to provide recovery capability if multiple internal keyholders become unavailable at the same time.</p>
+
+      <h2>Documentation</h2>
+      <p>A multisig setup without documentation is not a complete custody solution. The church's custody documentation should answer every question an incoming officer or new treasurer would need answered:</p>
+      <ul>
+        <li>What is the multisig configuration and why?</li>
+        <li>Where is each hardware device stored?</li>
+        <li>Where is each seed phrase backup stored?</li>
+        <li>What is the recovery procedure if one keyholder becomes unavailable?</li>
+        <li>Who is responsible for onboarding new keyholders when leadership changes?</li>
+      </ul>
+      <p>This documentation should be a formal church record — maintained alongside the church's financial records, accessible to the officers or their designated trustee.</p>
+
+      <h2>The Succession Problem</h2>
+      <p>Leadership transitions are a feature of church life, not an exception to it. The most dangerous moment in a church's bitcoin custody is a leadership transition without a custody handoff procedure. Without a documented process for how a departing keyholder passes responsibilities to a successor, the custody architecture degrades with every transition.</p>
+      <p>A properly designed church custody arrangement includes an explicit transition procedure: what triggers a key rotation, who is responsible for initiating it, how the incoming keyholder is onboarded and verified, and how the transition is recorded in the church's documentation.</p>
+
+      <h2>Consistent Shrewdness</h2>
+      <p>Holding bitcoin is a shrewd recognition of our monetary moment. Holding it properly — in a custody architecture that actually delivers what bitcoin promises, built for an institution that will outlast any individual keyholder — is the consistent conclusion of that shrewdness.</p>
+    </div>
+
+    <div class="pullquote">
+      <p>"The standard is not perfection — it is prudent stewardship. If your church holds bitcoin, how you hold it deserves the same careful attention you gave to the question of whether to hold it."</p>
+    </div>
+
+    <div class="further-reading">
+      <div class="further-reading-label">Further Reading</div>
+      <a href="https://founders.org/articles/shrewd-money-for-the-sons-of-light-how-the-church-can-use-bitcoin-for-eternal-purposes-in-a-fallen-world/" target="_blank">Shrewd Money for the Sons of Light: How the Church Can Use Bitcoin for Eternal Purposes in a Fallen World ↗</a>
+      <p>A thorough treatment of the theological and financial case for why a church should hold bitcoin — including a primer on money, the failures of our current system, and bitcoin's properties for the church. Published at Founders Ministries.</p>
+    </div>
+
+    <div style="border-top:1px solid var(--accent-muted);padding-top:28px;margin-top:28px;">
+      <p style="font-size:14px;color:var(--text-faint);font-style:italic;font-weight:300;">Stan Reeves is Professor Emeritus in the Department of Electrical &amp; Computer Engineering at Auburn University and a bitcoin custody and inheritance consultant. He has served for many years as a church elder and works with individuals, estate attorneys, financial advisors, and institutions — including churches. Contact: <a href="mailto:stan@stanreeves.com" style="color:var(--accent);">stan@stanreeves.com</a></p>
+    </div>
+  </main>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">About the Author</div>
+      <div class="author-card">
+        <div class="author-photo"><img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves"></div>
+        <div class="author-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="author-title">Professor Emeritus<br>Auburn University<br>Church Elder</div>
+        <div class="author-bio">Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions — including churches.</div>
+        <a class="author-link" href="../../about">Read full bio →</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-cta">
+        <h4>Custody Guidance for Churches</h4>
+        <p>If your church holds bitcoin or is considering it, a custody consultation covers architecture, key distribution, documentation, and succession planning specific to your governance structure.</p>
+        <a href="../../institutions">Learn More</a>
+        <a href="../contact?subject=Church+Custody+Consultation" style="background:transparent;color:var(--accent-light);border:1px solid rgba(196,163,90,0.4);">Schedule a Consultation</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Related Reading</div>
+      <div class="related-item">
+        <a href="../post">The Five Most Common Bitcoin Custody Mistakes</a>
+        <span>For Individuals · April 2026</span>
+      </div>
+      <div class="related-item">
+        <a href="../bitcoin-inheritance-attorneys">Bitcoin Inheritance for Estate Attorneys</a>
+        <span>For Attorneys · April 2026</span>
+      </div>
+      <div class="related-item">
+        <a href="../self-custody-advisors">Why Recommending Self-Custody Makes You a Better Advisor</a>
+        <span>For Advisors · July 2026</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="article-footer-cta">
+    <h2>Does your church hold bitcoin the right way?</h2>
+    <a class="btn-primary" style="background:var(--accent);" href="../contact?subject=Church+Custody+Consultation">Schedule a Consultation</a>
+  </div>
+
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.6;font-family:var(--font-m);letter-spacing:0.06em;">PhD<span class="pe-cred">, PE</span></span></div>
+      <p class="footer-tagline">Professor Emeritus, Auburn University. Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/stan-reeves-ba75289/">LinkedIn</a>
+        <a href="https://x.com/onedigitmoney">@onedigitmoney</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Pages</h4>
+      <a href="../homepage">Home</a><a href="../../about">About</a><a href="../../resources">Resources</a><a href="../../contact">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Work With Me</h4>
+      <a href="../../individuals">Individuals &amp; Families</a><a href="../../attorneys">Estate Attorneys</a><a href="../../advisors">Financial Advisors</a><a href="../../institutions">Institutions</a>
+    </div>
+    <div class="footer-col"><h4>Resources</h4>
+      <a href="../bitcoin-inheritance-attorneys">Bitcoin &amp; Estate Attorneys</a>
+      <a href="../post">5 Custody Mistakes</a>
+      <a href="../churches">Bitcoin for Churches</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Stan Reeves. All rights reserved. · stanreeves.com · stan@stanreeves.com</div>
+  </div>
+</footer></body></html>

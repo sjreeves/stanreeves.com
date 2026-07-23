@@ -1,0 +1,19 @@
+/* ==========================================================
+   PE CREDENTIAL SWITCH
+   stanreeves.com — branding/pe-switch.css
+
+   Controls visibility of the Professional Engineer (P.E.)
+   credential everywhere it appears on the site.
+
+   All PE credential elements carry the class: pe-cred
+
+   DEFAULT: OFF (hidden)
+   ──────────────────────────────────────────────────────────
+   TO TURN ON:
+     Comment out or delete the single rule below.
+
+   TO TURN OFF:
+     Uncomment (or restore) the rule below.
+   ========================================================== */
+
+.pe-cred { display: none !important; }

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Stan Reeves, PhD</title>
+<link rel="icon" type="image/svg+xml" href="../favicon-direction-a.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#F7F3ED; --bg-subtle:#F0E8D8; --bg-dark:#1C1712; --bg-dark-alt:#2A211A;
+  --text:#1C1712; --text-muted:#3D3328; --text-faint:#8B7060; --text-inv:#F7F3ED;
+  --accent:#8B6914; --accent-light:#C4A35A; --accent-muted:#D4C4A8;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'DM Mono','Courier New',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;text-wrap:pretty;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--accent-muted);padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{width:36px;height:36px;background:var(--bg-dark);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-mark span{font-family:var(--font-d);font-size:15px;color:var(--accent-light);font-weight:500;}
+.nav-brand-name{font-family:var(--font-d);font-size:20px;font-weight:300;color:var(--text);letter-spacing:0.02em;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:15px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.nav-links a:hover{color:var(--accent);}
+/* nav dropdown */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{background:none;border:none;cursor:pointer;font-family:var(--font-b);font-size:15px;color:var(--text-muted);letter-spacing:0.03em;padding:0;transition:color 0.2s;}
+.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{color:var(--accent);}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--bg);border:1px solid var(--accent-muted);min-width:230px;padding:8px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:10px 20px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s,background 0.2s;}
+.nav-dropdown-menu a:hover{color:var(--accent);background:rgba(139,105,20,0.06);}
+.mob-dropdown-trigger{background:none;border:none;cursor:pointer;display:block;width:100%;text-align:left;font-family:var(--font-b);font-size:16px;color:var(--text-muted);padding:14px 28px;text-decoration:none;letter-spacing:0.03em;transition:color 0.2s;}
+.mob-dropdown-trigger:hover{color:var(--accent);}
+.mob-dropdown-menu{display:none;background:rgba(139,105,20,0.04);border-left:2px solid var(--accent-muted);margin:0 28px 4px;}
+.mob-dropdown.open .mob-dropdown-menu{display:block;}
+.mob-dropdown-menu a{display:block;padding:10px 16px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.mob-dropdown-menu a:hover{color:var(--accent);}
+.nav-cta{background:var(--bg-dark);color:var(--text-inv);border:none;padding:10px 22px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent);}
+.section-label{font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.btn-primary{display:inline-block;background:var(--bg-dark);color:var(--text-inv);border:none;padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.2s;}
+.btn-primary:hover{background:var(--accent);}
+.btn-secondary{display:inline-block;background:transparent;color:var(--accent);border:1px solid var(--accent);padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;}
+footer{background:var(--bg-dark);color:var(--text-inv);border-top:1px solid rgba(139,105,20,0.3);padding:56px 64px 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand{display:flex;flex-direction:column;gap:16px;}
+.footer-brand-name{font-family:var(--font-d);font-size:24px;font-weight:300;}
+.footer-tagline{font-size:15px;color:#A89070;line-height:1.6;font-weight:300;max-width:280px;}
+.footer-socials{display:flex;gap:16px;margin-top:8px;}
+.footer-socials a{font-family:var(--font-m);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-light);text-decoration:none;opacity:0.8;}
+.footer-col h4{font-family:var(--font-m);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px;}
+.footer-col a{display:block;font-size:15px;color:#A89070;text-decoration:none;margin-bottom:10px;font-weight:300;}
+.footer-col a:hover{color:var(--text-inv);}
+.footer-bottom{border-top:1px solid rgba(139,105,20,0.2);padding-top:24px;display:flex;justify-content:space-between;}
+.footer-copy{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:#5A4A38;}
+</style>
+<link rel="stylesheet" href="../pe-switch.css">
+<link rel="stylesheet" href="../mobile.css">
+<script src="../mobile-nav.js" defer></script>
+</head>
+<body><nav>
+  <a class="nav-brand" href="/">
+    <div class="nav-logo-mark"><span>SR</span></div>
+    <span class="nav-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.7;">PhD<span class="pe-cred">, PE</span></span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="../about">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">Work With Me &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="../individuals">Individuals &amp; Families</a>
+        <a href="../attorneys">Estate Attorneys &amp; CLE</a>
+        <a href="../advisors">Financial Advisors</a>
+        <a href="../institutions">Institutions</a>
+      </div>
+    </div>
+    <a href="../resources">Resources</a>
+    <a href="../contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="../contact">Schedule a Consultation</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/">Home</a>
+  <a href="../about">About</a>
+  <div class="mob-dropdown">
+    <button class="mob-dropdown-trigger">Work With Me &#9662;</button>
+    <div class="mob-dropdown-menu">
+      <a href="../individuals">Individuals &amp; Families</a>
+      <a href="../attorneys">Estate Attorneys &amp; CLE</a>
+      <a href="../advisors">Financial Advisors</a>
+      <a href="../institutions">Institutions</a>
+    </div>
+  </div>
+  <a href="../resources">Resources</a>
+  <a href="../contact">Contact</a>
+  <a class="nav-cta-mobile" href="../contact">Schedule a Consultation</a>
+</div>
+
+<div style="min-height:calc(100vh - 68px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 64px;text-align:center;">
+  <div style="max-width:520px;">
+    <div style="width:56px;height:1px;background:var(--accent);margin:0 auto 32px;"></div>
+    <div style="font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">Message Received</div>
+    <h1 style="font-family:var(--font-d);font-size:56px;font-weight:300;line-height:1.06;color:var(--text);margin-bottom:24px;">Thank you for reaching out.</h1>
+    <p style="font-size:17px;line-height:1.7;color:var(--text-muted);font-weight:300;margin-bottom:12px;">I aim to respond within one business day.</p>
+    <div style="width:56px;height:1px;background:var(--accent-muted);margin:32px auto;"></div>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn-primary" href="/">Return Home</a>
+      <a class="btn-secondary" href="../resources">Browse Resources</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.6;font-family:var(--font-m);letter-spacing:0.06em;">PhD<span class="pe-cred">, PE</span></span></div>
+      <p class="footer-tagline">Professor Emeritus, Auburn University. Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/stan-reeves-ba75289/">LinkedIn</a>
+        <a href="https://x.com/onedigitmoney">@onedigitmoney</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Pages</h4>
+      <a href="/">Home</a><a href="../about">About</a><a href="../resources">Resources</a><a href="../contact">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Work With Me</h4>
+      <a href="../individuals">Individuals &amp; Families</a><a href="../attorneys">Estate Attorneys</a><a href="../advisors">Financial Advisors</a><a href="../institutions">Institutions</a>
+    </div>
+    <div class="footer-col"><h4>Resources</h4>
+      <a href="blog-bitcoin-inheritance-attorneys">Bitcoin &amp; Estate Attorneys</a>
+      <a href="blog-post">5 Custody Mistakes</a>
+      <a href="blog-churches">Bitcoin for Churches</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Stan Reeves. All rights reserved. · stanreeves.com · stan@stanreeves.com</div>
+  </div>
+</footer></body></html>

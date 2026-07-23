@@ -1,0 +1,334 @@
+/*
+ * stanreeves.com — Design Tokens
+ * Generated: May 2026
+ * Three directions: A (Warm Institutional), B (Slate & Ember), C (Bitcoin Black)
+ * Use one :root block; comment out the others.
+ *
+ * Typography: Cormorant Garamond (display) + DM Mono (accent) + DM Sans (body)
+ * Google Fonts import:
+ * @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+ */
+
+/* ──────────────────────────────────────────
+   DIRECTION A — Warm Institutional
+   Deep sepia · Antique gold · Warm off-white
+   ────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --color-bg:           #F7F3ED;   /* warm off-white page bg */
+  --color-bg-subtle:    #F0E8D8;   /* tinted block bg (callouts, cards) */
+  --color-bg-dark:      #1C1712;   /* inverted sections */
+  --color-bg-dark-alt:  #2A211A;   /* slightly lighter dark (photo panels) */
+
+  /* Foregrounds */
+  --color-text:         #1C1712;   /* primary text */
+  --color-text-muted:   #3D3328;   /* body paragraphs */
+  --color-text-faint:   #8B7060;   /* captions, meta */
+  --color-text-inverse: #F7F3ED;   /* text on dark bg */
+
+  /* Accent — Antique Gold */
+  --color-accent:       #8B6914;   /* primary accent: rules, labels, links */
+  --color-accent-light: #C4A35A;   /* lighter gold: on dark bg */
+  --color-accent-muted: #D4C4A8;   /* very subtle: borders, dividers */
+
+  /* Typography */
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+
+  --text-display-xl:  72px;   /* hero headline */
+  --text-display-lg:  56px;   /* section headline */
+  --text-display-md:  38px;   /* article headline */
+  --text-display-sm:  24px;   /* card headline */
+  --text-body-lg:     17px;
+  --text-body:        15px;
+  --text-body-sm:     13px;
+  --text-label:       10px;   /* mono uppercase label */
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  --leading-tight:  1.05;
+  --leading-snug:   1.25;
+  --leading-body:   1.65;
+
+  --tracking-label: 0.28em;   /* mono uppercase labels */
+  --tracking-wide:  0.08em;   /* button text */
+
+  /* Spacing */
+  --space-xs:   8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  48px;
+  --space-xl:  80px;
+
+  /* Borders & radius — kept sharp (no radius) for this direction */
+  --radius:      0px;
+  --border:      1px solid var(--color-accent-muted);
+  --border-accent: 1px solid var(--color-accent);
+
+  /* Buttons */
+  --btn-primary-bg:    var(--color-bg-dark);
+  --btn-primary-text:  var(--color-text-inverse);
+  --btn-secondary-bg:  transparent;
+  --btn-secondary-text: var(--color-accent);
+  --btn-secondary-border: var(--color-accent);
+  --btn-padding:       13px 28px;
+  --btn-font-size:     13px;
+  --btn-tracking:      0.08em;
+}
+
+
+/* ──────────────────────────────────────────
+   DIRECTION B — Slate & Ember
+   Cool charcoal · Muted amber · Pale cool white
+   ────────────────────────────────────────── */
+/*
+:root {
+  --color-bg:           #F4F6F8;
+  --color-bg-subtle:    #EFF2F5;
+  --color-bg-dark:      #14202B;
+  --color-bg-dark-alt:  #0D1821;
+
+  --color-text:         #14202B;
+  --color-text-muted:   #3A5068;
+  --color-text-faint:   #4A6070;
+  --color-text-inverse: #F4F6F8;
+
+  --color-accent:       #C4621A;
+  --color-accent-light: #D4845A;
+  --color-accent-muted: #D8E2EA;
+
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+
+  --text-display-xl:  68px;
+  --text-display-lg:  54px;
+  --text-display-md:  36px;
+  --text-display-sm:  22px;
+  --text-body-lg:     17px;
+  --text-body:        15px;
+  --text-body-sm:     13px;
+  --text-label:       10px;
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  --leading-tight:  1.07;
+  --leading-snug:   1.28;
+  --leading-body:   1.65;
+
+  --tracking-label: 0.26em;
+  --tracking-wide:  0.10em;
+
+  --space-xs:   8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  48px;
+  --space-xl:  80px;
+
+  --radius:      0px;
+  --border:      1px solid var(--color-accent-muted);
+  --border-accent: 2px solid var(--color-accent);
+
+  --btn-primary-bg:    var(--color-accent);
+  --btn-primary-text:  var(--color-text-inverse);
+  --btn-secondary-bg:  transparent;
+  --btn-secondary-text: var(--color-text);
+  --btn-secondary-border: rgba(20,32,43,0.25);
+  --btn-padding:       12px 24px;
+  --btn-font-size:     12px;
+  --btn-tracking:      0.10em;
+}
+*/
+
+
+/* ──────────────────────────────────────────
+   DIRECTION C — Bitcoin Black
+   Pure mono · Single Bitcoin-orange strike
+   ────────────────────────────────────────── */
+/*
+:root {
+  --color-bg:           #FAFAFA;
+  --color-bg-subtle:    #F5F5F5;
+  --color-bg-dark:      #0A0A0A;
+  --color-bg-dark-alt:  #111111;
+
+  --color-text:         #0A0A0A;
+  --color-text-muted:   #444444;
+  --color-text-faint:   #888888;
+  --color-text-inverse: #FAFAFA;
+
+  --color-accent:       #F7931A;
+  --color-accent-light: #F7931A;
+  --color-accent-muted: #E8E8E8;
+
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+
+  --text-display-xl:  72px;
+  --text-display-lg:  60px;
+  --text-display-md:  38px;
+  --text-display-sm:  24px;
+  --text-body-lg:     17px;
+  --text-body:        15px;
+  --text-body-sm:     13px;
+  --text-label:       10px;
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+
+  --leading-tight:  1.04;
+  --leading-snug:   1.25;
+  --leading-body:   1.65;
+
+  --tracking-label: 0.24em;
+  --tracking-wide:  0.10em;
+
+  --space-xs:   8px;
+  --space-sm:  16px;
+  --space-md:  28px;
+  --space-lg:  52px;
+  --space-xl:  88px;
+
+  --radius:      0px;
+  --border:      1px solid var(--color-accent-muted);
+  --border-accent: 2px solid var(--color-accent);
+
+  --btn-primary-bg:    var(--color-bg-dark);
+  --btn-primary-text:  var(--color-text-inverse);
+  --btn-secondary-bg:  transparent;
+  --btn-secondary-text: var(--color-text);
+  --btn-secondary-border: #D0D0D0;
+  --btn-padding:       13px 28px;
+  --btn-font-size:     12px;
+  --btn-tracking:      0.10em;
+}
+*/
+
+
+/* ──────────────────────────────────────────
+   SHARED BASE STYLES
+   Apply after tokens are set
+   ────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+/* Display / headline */
+.display, h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.01em;
+}
+
+h1 { font-size: var(--text-display-xl); }
+h2 { font-size: var(--text-display-lg); }
+h3 { font-size: var(--text-display-md); }
+
+/* Mono label */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Accent rule */
+.rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--color-accent);
+  margin: var(--space-md) 0;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  padding: var(--btn-padding);
+  font-family: var(--font-body);
+  font-size: var(--btn-font-size);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--btn-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+  padding: var(--btn-padding);
+  font-family: var(--font-body);
+  font-size: var(--btn-font-size);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--btn-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Pull quote */
+.pullquote {
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-md) var(--space-sm) var(--space-md) var(--space-md);
+  background: var(--color-bg-subtle);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* Stat figure */
+.stat-figure {
+  border-top: 1px solid var(--color-accent);
+  padding-top: var(--space-md);
+}
+
+.stat-figure__number {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: var(--weight-light);
+  color: var(--color-accent-light);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-figure__label {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.stat-figure__sub {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--weight-light);
+  color: var(--color-text-faint);
+  line-height: 1.5;
+}

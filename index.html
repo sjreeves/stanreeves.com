@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stan Reeves, PhD | Bitcoin Custody & Inheritance Guidance</title>
+<link rel="icon" type="image/svg+xml" href="favicon-direction-a.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #F7F3ED;
+  --bg-subtle:    #F0E8D8;
+  --bg-dark:      #1C1712;
+  --bg-dark-alt:  #2A211A;
+  --text:         #1C1712;
+  --text-muted:   #3D3328;
+  --text-faint:   #8B7060;
+  --text-inv:     #F7F3ED;
+  --accent:       #8B6914;
+  --accent-light: #C4A35A;
+  --accent-muted: #D4C4A8;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'DM Sans', system-ui, sans-serif;
+  --font-m: 'DM Mono', 'Courier New', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-b); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--accent-muted);
+  padding: 0 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--bg-dark);
+  border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-mark span { font-family: var(--font-d); font-size: 15px; color: var(--accent-light); font-weight: 500; }
+.nav-brand-name { font-family: var(--font-d); font-size: 20px; font-weight: 300; color: var(--text); letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-family: var(--font-b); font-size: 15px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+/* ── Nav dropdown ── */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-trigger { background: none; border: none; cursor: pointer; font-family: var(--font-b); font-size: 15px; color: var(--text-muted); letter-spacing: 0.03em; padding: 0; transition: color 0.2s; }
+.nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { color: var(--accent); }
+.nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--bg); border: 1px solid var(--accent-muted); min-width: 230px; padding: 8px 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block; padding: 10px 20px; font-family: var(--font-b); font-size: 14px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s, background 0.2s; }
+.nav-dropdown-menu a:hover { color: var(--accent); background: rgba(139,105,20,0.06); }
+/* ── Mobile dropdown ── */
+.mob-dropdown-trigger { background: none; border: none; cursor: pointer; display: block; width: 100%; text-align: left; font-family: var(--font-b); font-size: 16px; color: var(--text-muted); padding: 14px 28px; text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.mob-dropdown-trigger:hover { color: var(--accent); }
+.mob-dropdown-menu { display: none; background: rgba(139,105,20,0.04); border-left: 2px solid var(--accent-muted); margin: 0 28px 4px; }
+.mob-dropdown.open .mob-dropdown-menu { display: block; }
+.mob-dropdown-menu a { display: block; padding: 10px 16px; font-family: var(--font-b); font-size: 14px; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; }
+.mob-dropdown-menu a:hover { color: var(--accent); }
+.nav-cta {
+  background: var(--bg-dark); color: var(--text-inv);
+  border: none; padding: 10px 22px;
+  font-family: var(--font-b); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent); }
+
+/* ── Hero ── */
+.hero {
+  display: grid; grid-template-columns: 1fr 400px;
+  min-height: calc(100vh - 68px);
+}
+.hero-left {
+  padding: 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--accent-muted);
+}
+.hero-label {
+  font-family: var(--font-m); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero-headline {
+  font-family: var(--font-d); font-size: 68px; font-weight: 300;
+  line-height: 1.04; color: var(--text); max-width: 580px;
+}
+.hero-rule { width: 60px; height: 1px; background: var(--accent); margin: 32px 0; }
+.hero-body { font-size: 19px; line-height: 1.7; color: var(--text-muted); max-width: 500px; font-weight: 300; }
+.hero-actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--bg-dark); color: var(--text-inv);
+  border: none; padding: 14px 30px;
+  font-family: var(--font-b); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent); }
+.btn-secondary {
+  background: transparent; color: var(--accent);
+  border: 1px solid var(--accent); padding: 14px 30px;
+  font-family: var(--font-b); font-size: 14px; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--accent); color: var(--text-inv); }
+.hero-credential {
+  margin-top: 36px;
+  font-family: var(--font-m); font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); opacity: 0.7;
+}
+
+.hero-right {
+  background: var(--bg-dark-alt);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px; padding: 60px 40px; position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0, transparent 20px,
+    rgba(139,105,20,0.04) 20px, rgba(139,105,20,0.04) 21px
+  );
+}
+.hero-photo-placeholder {
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: var(--bg-dark);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.hero-photo-placeholder span { font-family: var(--font-m); font-size: 9px; color: var(--accent); letter-spacing: 0.12em; opacity: 0.6; text-align: center; }
+.hero-bio { text-align: center; position: relative; z-index: 1; }
+.hero-bio-name { font-family: var(--font-d); font-size: 26px; font-weight: 300; color: var(--text-inv); letter-spacing: 0.02em; }
+.hero-bio-title { font-family: var(--font-m); font-size: 11px; color: var(--accent-light); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 8px; line-height: 1.6; opacity: 0.85; }
+.hero-accent-bar { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
+
+/* ── Section shell ── */
+section { padding: 96px 64px; }
+.section-label { font-family: var(--font-m); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.section-headline { font-family: var(--font-d); font-size: 54px; font-weight: 300; line-height: 1.08; margin-bottom: 48px; }
+
+/* ── Audience cards ── */
+.audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--accent-muted); }
+.audience-card { padding: 36px 28px; border-right: 1px solid var(--accent-muted); transition: background 0.2s; cursor: pointer; }
+.audience-card:last-child { border-right: none; }
+.audience-card:hover { background: var(--bg-subtle); }
+.audience-card-label { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.audience-card-title { font-family: var(--font-d); font-size: 26px; font-weight: 400; line-height: 1.2; margin-bottom: 12px; }
+.audience-card-body { font-size: 15px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+.audience-card-link { display: inline-block; margin-top: 16px; font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.audience-card-link:hover { text-decoration: underline; }
+
+/* ── Stats ── */
+.stats-section { background: var(--bg-dark); color: var(--text-inv); }
+.stats-section .section-headline { color: var(--text-inv); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.stat-card { border-top: 1px solid var(--accent); padding-top: 24px; }
+.stat-number { font-family: var(--font-d); font-size: 76px; font-weight: 300; color: var(--accent-light); line-height: 1; margin-bottom: 16px; }
+.stat-label { font-size: 17px; font-weight: 500; color: var(--text-inv); margin-bottom: 10px; line-height: 1.3; }
+.stat-sub { font-size: 14px; color: #A89070; line-height: 1.55; font-weight: 300; }
+
+/* ── About strip ── */
+.about-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-img-placeholder {
+  aspect-ratio: 4/5; background: var(--bg-dark-alt);
+  border: 1px solid var(--accent-muted);
+  position: relative; overflow: hidden;
+}
+.about-text { display: flex; flex-direction: column; gap: 0; }
+.about-body { font-size: 17px; line-height: 1.75; color: var(--text-muted); font-weight: 300; margin-bottom: 20px; }
+.about-quote { border-left: 3px solid var(--accent); padding: 18px 0 18px 22px; background: var(--bg-subtle); margin: 24px 0; }
+.about-quote p { font-family: var(--font-d); font-size: 23px; font-style: italic; line-height: 1.5; color: var(--text); }
+.about-quote cite { display: block; font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-top: 10px; font-style: normal; }
+.credentials { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+.credential { display: flex; gap: 14px; align-items: flex-start; }
+.credential-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+.credential-text { font-size: 15px; color: var(--text-muted); line-height: 1.4; }
+.credential-text strong { font-weight: 500; color: var(--text); display: block; }
+
+/* ── Services ── */
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--accent-muted); }
+.service-card { background: var(--bg); padding: 40px 36px; }
+.service-card:hover { background: var(--bg-subtle); }
+.service-title { font-family: var(--font-d); font-size: 30px; font-weight: 400; margin-bottom: 12px; }
+.service-body { font-size: 16px; line-height: 1.65; color: var(--text-muted); font-weight: 300; }
+.service-rule { width: 36px; height: 0px; background: var(--accent); margin-bottom: 16px; }
+
+/* ── Resources ── */
+.resources-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+.resource-card { border: 1px solid var(--accent-muted); padding: 32px 28px; transition: border-color 0.2s; }
+.resource-card:hover { border-color: var(--accent); }
+.resource-tag { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); background: var(--bg-subtle); padding: 4px 12px; display: inline-block; margin-bottom: 14px; }
+.resource-date { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 12px; }
+.resource-title { font-family: var(--font-d); font-size: 26px; font-weight: 400; line-height: 1.25; margin-bottom: 12px; }
+.resource-body { font-size: 15px; line-height: 1.6; color: var(--text-muted); font-weight: 300; }
+.resource-link { display: inline-block; margin-top: 16px; font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+.resource-newsletter { background: var(--bg-dark); padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; }
+.resource-newsletter .section-label { color: var(--accent-light); }
+.resource-newsletter h3 { font-family: var(--font-d); font-size: 26px; font-weight: 300; color: var(--text-inv); line-height: 1.3; margin: 12px 0 18px; }
+.resource-newsletter p { font-size: 15px; color: #A89070; font-weight: 300; line-height: 1.55; }
+.resource-newsletter a { display: inline-block; margin-top: 20px; font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); text-decoration: none; }
+
+/* ── CTA banner ── */
+.cta-banner {
+  background: var(--bg-dark); padding: 80px 64px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.cta-banner h2 { font-family: var(--font-d); font-size: 48px; font-weight: 300; color: var(--text-inv); line-height: 1.1; max-width: 520px; }
+.cta-banner-actions { display: flex; flex-direction: column; gap: 14px; flex-shrink: 0; }
+
+/* ── Footer ── */
+footer {
+  background: var(--bg-dark); color: var(--text-inv);
+  border-top: 1px solid rgba(139,105,20,0.3);
+  padding: 56px 64px 40px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-brand-name { font-family: var(--font-d); font-size: 22px; font-weight: 300; color: var(--text-inv); }
+.footer-tagline { font-size: 15px; color: #A89070; line-height: 1.6; font-weight: 300; max-width: 280px; }
+.footer-socials { display: flex; gap: 16px; margin-top: 8px; }
+.footer-socials a { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); text-decoration: none; opacity: 0.8; }
+.footer-col h4 { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 15px; color: #A89070; text-decoration: none; margin-bottom: 10px; font-weight: 300; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-inv); }
+.footer-bottom { border-top: 1px solid rgba(139,105,20,0.2); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.12em; color: #5A4A38; }
+</style>
+<link rel="stylesheet" href="pe-switch.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="mobile-nav.js" defer></script>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a class="nav-brand" href="/">
+    <div class="nav-logo-mark"><span>SR</span></div>
+    <span class="nav-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.7;">PhD<span class="pe-cred">, PE</span></span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="about">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">Work With Me &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="individuals">Individuals &amp; Families</a>
+        <a href="attorneys">Estate Attorneys &amp; CLE</a>
+        <a href="advisors">Financial Advisors</a>
+        <a href="institutions">Institutions</a>
+      </div>
+    </div>
+    <a href="resources">Resources</a>
+    <a href="contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="contact">Schedule a Consultation</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/">Home</a>
+  <a href="about">About</a>
+  <div class="mob-dropdown">
+    <button class="mob-dropdown-trigger">Work With Me &#9662;</button>
+    <div class="mob-dropdown-menu">
+      <a href="individuals">Individuals &amp; Families</a>
+      <a href="attorneys">Estate Attorneys &amp; CLE</a>
+      <a href="advisors">Financial Advisors</a>
+      <a href="institutions">Institutions</a>
+    </div>
+  </div>
+  <a href="resources">Resources</a>
+  <a href="contact">Contact</a>
+  <a class="nav-cta-mobile" href="contact">Schedule a Consultation</a>
+</div>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Bitcoin Custody &amp; Inheritance Guidance</div>
+    <h1 class="hero-headline">Trusted Custody Guidance for Serious Bitcoin Holders</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-body">Stan Reeves — Professor Emeritus, Auburn University — provides expert bitcoin self-custody and inheritance guidance for individuals, institutions, estate attorneys, and financial advisors.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="contact">Schedule a Consultation</a>
+      <a class="btn-secondary" href="about">Learn About My Work</a>
+    </div>
+    <div class="hero-credential">Professor Emeritus · PhD<span class="pe-cred">, PE</span> · Dept. of Electrical &amp; Computer Engineering · Auburn University</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-accent-bar"></div>
+    <div class="hero-photo-placeholder" style="background:var(--bg-dark);border:1px solid var(--accent);overflow:hidden;">
+    <img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves" style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:sepia(12%) contrast(1.04);">
+  </div>
+    <div class="hero-bio">
+      <div class="hero-bio-name">Stan Reeves</div>
+      <div class="hero-bio-title">PhD<span class="pe-cred">, PE</span> · Professor Emeritus<br>Auburn University</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Who I Work With ── -->
+<section>
+  <div class="section-label">Who I Work With</div>
+  <h2 class="section-headline">Find your path</h2>
+  <div class="audience-grid">
+    <a class="audience-card" href="individuals" style="text-decoration:none;color:inherit;">
+      <div class="audience-card-label">Individuals</div>
+      <div class="audience-card-title">Individuals &amp; Families</div>
+      <p class="audience-card-body">Expert custody architecture and inheritance planning for individuals and families with meaningful bitcoin holdings.</p>
+      <span class="audience-card-link">Learn more →</span>
+    </a>
+    <a class="audience-card" href="attorneys" style="text-decoration:none;color:inherit;">
+      <div class="audience-card-label">Attorneys</div>
+      <div class="audience-card-title">Estate Attorneys &amp; CLE</div>
+      <p class="audience-card-body">A credentialed referral partner for your bitcoin-holding clients — and a CLE program for your firm or bar association.</p>
+      <span class="audience-card-link">Learn more →</span>
+    </a>
+    <a class="audience-card" href="advisors" style="text-decoration:none;color:inherit;">
+      <div class="audience-card-label">Advisors</div>
+      <div class="audience-card-title">Financial Advisors</div>
+      <p class="audience-card-body">Bitcoin literacy and custody expertise you can bring in for clients — without becoming the expert yourself.</p>
+      <span class="audience-card-link">Learn more →</span>
+    </a>
+    <a class="audience-card" href="institutions" style="text-decoration:none;color:inherit;">
+      <div class="audience-card-label">Institutions</div>
+      <div class="audience-card-title">Institutions &amp; Churches</div>
+      <p class="audience-card-body">Custody structures designed for organizational governance — multi-signatory, succession-ready, policy-documented.</p>
+      <span class="audience-card-link">Learn more →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── Stats ── -->
+<section class="stats-section">
+  <div class="section-label" style="color: var(--accent-light);">Why It Matters</div>
+  <h2 class="section-headline">Bitcoin custody mistakes are permanent.</h2>
+  <p style="font-size:15px;color:#A89070;max-width:580px;margin-bottom:52px;font-weight:300;line-height:1.7;">Unlike a lost bank account, lost bitcoin cannot be recovered. No institution holds your keys. No court order restores access.</p>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">~20%</div>
+      <div class="stat-label">of all bitcoin is estimated lost</div>
+      <div class="stat-sub">Primarily due to poor custody decisions and absent inheritance plans</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">$0</div>
+      <div class="stat-label">recovered in documented cases where seed phrases were lost</div>
+      <div class="stat-sub">No institution, no court order, no recovery path exists</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="letter-spacing:0.01em;"><span style="font-family: 'Times New Romans', serif;font-size: 0.6em;padding-right: 0.25em;">1</span><span style="font-size:0.75em;font-weight:300;">BTC</span></div>
+      <div class="stat-label">the threshold for formal custody architecture</div>
+      <div class="stat-sub">At which a custody architecture and inheritance plan becomes essential, not optional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section>
+  <div class="about-strip">
+    <div class="about-img-placeholder" style="overflow:hidden;">
+      <img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:sepia(8%) contrast(1.03);">
+    </div>
+    <div class="about-text">
+      <div class="section-label">About Stan</div>
+      <h2 class="section-headline" style="font-size:40px;margin-bottom:20px;">Academic rigor. Real-world custody expertise.</h2>
+      <p class="about-body">Stan Reeves is Professor Emeritus in the Department of Electrical &amp; Computer Engineering at Auburn University, where he spent decades applying rigorous analytical discipline to complex systems problems.</p>
+      <p class="about-body">Since 2021, he has applied that same discipline to understanding bitcoin as an asset, educating and providing guidance on self-custody and inheritance planning — an area where the consequences of getting it wrong are irreversible.</p>
+      <div class="about-quote">
+        <p>"Bitcoin's value lies in sovereign ownership — but sovereignty without planning is fragility. My work is to help serious bitcoin holders build custody architectures that are secure, recoverable, and designed to outlast them."</p>
+        <cite>Stan Reeves</cite>
+      </div>
+      <div class="credentials">
+        <div class="credential">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Professor Emeritus, PhD<span class="pe-cred">, PE</span></strong>Dept. of Electrical &amp; Computer Engineering, Auburn University</div>
+        </div>
+        <div class="credential">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Bitcoin Custody Specialist</strong>Self-custody architecture, multisig design, and inheritance planning</div>
+        </div>
+        <div class="credential">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Bitcoin Educator</strong>Asset characteristics, custody, and inheritance education for estate attorneys, financial planners, and serious holders — CLE-accredited, advisory, and one-on-one</div>
+        </div>
+        <div class="credential">
+          <div class="credential-dot"></div>
+          <div class="credential-text"><strong>Creator of <a target="_blank" href="https://keylay.org">Keylay</a></strong>Open-source remote multisig coordination tool for private, secure, air-gapped setup and spending</div>
+        </div>
+      </div>
+      <div style="margin-top:28px;">
+        <a class="btn-primary" href="about">Read Full Bio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section style="padding-top:0;">
+  <div class="section-label">Services</div>
+  <h2 class="section-headline">What I do</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-rule"></div>
+      <div class="service-title">Custody Architecture</div>
+      <p class="service-body">Assessment of your current setup and a clear recommendation — from single-key hardware wallets to multisig vaults — matched to your holdings and risk profile.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-rule"></div>
+      <div class="service-title">Inheritance Planning</div>
+      <p class="service-body">Documented procedures, coordination with your estate attorney, and heir education so your bitcoin reaches the people you intend — not the void.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-rule"></div>
+      <div class="service-title">Professional Education</div>
+      <p class="service-body">CLE programs for estate attorneys, advisory sessions for financial professionals, and literacy engagements for teams navigating bitcoin for the first time.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-rule"></div>
+      <div class="service-title">Institutional Governance</div>
+      <p class="service-body">Multi-signatory custody design, leadership transition protocols, and bitcoin holding policies for churches, nonprofits, and foundations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Resources ── -->
+<section>
+  <div class="section-label">Resources</div>
+  <h2 class="section-headline">From the desk of Stan Reeves</h2>
+  <div class="resources-grid">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <a class="resource-card" href="blog/self-custody-advisors" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+          <span class="resource-tag">For Advisors</span>
+          <span class="resource-date">July 2026</span>
+        </div>
+        <div class="resource-title">Why Recommending Self-Custody Makes You a Better Advisor — Not a Riskier One</div>
+        <p class="resource-body">The spot ETF made bitcoin easy to allocate. It did not make the ETF the right answer for every client — and the advisors who can tell the difference are keeping the clients worth keeping.</p>
+        <span class="resource-link">Read the article →</span>
+      </a>
+      <a class="resource-card" href="blog/bitcoin-inheritance-attorneys" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+          <span class="resource-tag">For Attorneys</span>
+          <span class="resource-date">April 2026</span>
+        </div>
+        <div class="resource-title">What Estate Attorneys Need to Know About Bitcoin Inheritance: A Practical Guide</div>
+        <p class="resource-body">Custody mechanics, multisig, seed phrases, and how to structure estate documents for clients who hold bitcoin — in plain language, no technical background required.</p>
+        <span class="resource-link">Read the guide →</span>
+      </a>
+      <a class="resource-card" href="blog/post" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+          <span class="resource-tag">For Individuals</span>
+          <span class="resource-date">April 2026</span>
+        </div>
+        <div class="resource-title">The Five Most Common Bitcoin Custody Mistakes — and How to Avoid Them</div>
+        <p class="resource-body">The errors that lead to permanent loss are remarkably consistent. If you self-custody bitcoin, you need to know whether you're making any of them.</p>
+        <span class="resource-link">Read the article →</span>
+      </a>
+      <a class="resource-card" href="blog/churches" style="text-decoration:none;color:inherit;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+          <span class="resource-tag">For Churches</span>
+          <span class="resource-date">April 2026</span>
+        </div>
+        <div class="resource-title">Bitcoin Self-Custody for Churches: A Practical Guide</div>
+        <p class="resource-body">The monetary properties that make bitcoin worth holding for a church exist only in self-custody. A practical guide to multisig architecture, key distribution, documentation, and succession planning.</p>
+        <span class="resource-link">Read the guide →</span>
+      </a>
+    </div>
+    <div class="resource-newsletter">
+      <div>
+        <div class="section-label">Stay Informed</div>
+        <h3>New resources published regularly</h3>
+        <p>Articles on custody, inheritance planning, and bitcoin for attorneys, advisors, and serious holders. No marketing — just substance.</p>
+        <a href="resources" style="font-family:var(--font-m);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-light);text-decoration:none;">View All Resources →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-banner">
+  <h2>Ready to secure your bitcoin?</h2>
+  <div class="cta-banner-actions">
+    <a class="btn-primary" href="contact">Schedule a Consultation</a>
+    <a class="btn-secondary" style="color:var(--accent-light);border-color:rgba(196,163,90,0.4);text-align:center;" href="contact">Contact Stan</a>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.6;font-family:var(--font-m);letter-spacing:0.06em;">PhD<span class="pe-cred">, PE</span></span></div>
+      <p class="footer-tagline">Professor Emeritus, Auburn University. Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/stan-reeves-ba75289/">LinkedIn</a>
+        <a href="https://x.com/onedigitmoney">@onedigitmoney</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <a href="/">Home</a>
+      <a href="about">About</a>
+      <a href="resources">Resources</a>
+      <a href="contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Work With Me</h4>
+      <a href="individuals">Individuals &amp; Families</a>
+      <a href="attorneys">Estate Attorneys</a>
+      <a href="advisors">Financial Advisors</a>
+      <a href="institutions">Institutions</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="blog/bitcoin-inheritance-attorneys">Bitcoin &amp; Estate Attorneys</a>
+      <a href="blog/post">5 Custody Mistakes</a>
+      <a href="blog/churches">Bitcoin for Churches</a>
+      <a href="blog/self-custody-advisors">Self-Custody for Advisors</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Stan Reeves. All rights reserved. · stanreeves.com · stan@stanreeves.com</div>
+  </div>
+</footer>
+
+</body>
+</html>

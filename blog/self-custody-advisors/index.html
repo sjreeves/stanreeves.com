@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Recommending Self-Custody Makes You a Better Advisor | Stan Reeves, PhD</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon-direction-a.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#F7F3ED; --bg-subtle:#F0E8D8; --bg-dark:#1C1712; --bg-dark-alt:#2A211A;
+  --text:#1C1712; --text-muted:#3D3328; --text-faint:#8B7060; --text-inv:#F7F3ED;
+  --accent:#8B6914; --accent-light:#C4A35A; --accent-muted:#D4C4A8;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --font-m:'DM Mono','Courier New',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;text-wrap:pretty;}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--accent-muted);padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{width:36px;height:36px;background:var(--bg-dark);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-mark span{font-family:var(--font-d);font-size:15px;color:var(--accent-light);font-weight:500;}
+.nav-brand-name{font-family:var(--font-d);font-size:20px;font-weight:300;color:var(--text);letter-spacing:0.02em;}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:15px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.nav-links a:hover{color:var(--accent);}
+/* nav dropdown */
+.nav-dropdown{position:relative;display:flex;align-items:center;}
+.nav-dropdown-trigger{background:none;border:none;cursor:pointer;font-family:var(--font-b);font-size:15px;color:var(--text-muted);letter-spacing:0.03em;padding:0;transition:color 0.2s;}
+.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{color:var(--accent);}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--bg);border:1px solid var(--accent-muted);min-width:230px;padding:8px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:10px 20px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s,background 0.2s;}
+.nav-dropdown-menu a:hover{color:var(--accent);background:rgba(139,105,20,0.06);}
+.mob-dropdown-trigger{background:none;border:none;cursor:pointer;display:block;width:100%;text-align:left;font-family:var(--font-b);font-size:16px;color:var(--text-muted);padding:14px 28px;text-decoration:none;letter-spacing:0.03em;transition:color 0.2s;}
+.mob-dropdown-trigger:hover{color:var(--accent);}
+.mob-dropdown-menu{display:none;background:rgba(139,105,20,0.04);border-left:2px solid var(--accent-muted);margin:0 28px 4px;}
+.mob-dropdown.open .mob-dropdown-menu{display:block;}
+.mob-dropdown-menu a{display:block;padding:10px 16px;font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-decoration:none;letter-spacing:0.03em;}
+.mob-dropdown-menu a:hover{color:var(--accent);}
+.nav-cta{background:var(--bg-dark);color:var(--text-inv);border:none;padding:10px 22px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--accent);}
+.section-label{font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.btn-primary{display:inline-block;background:var(--bg-dark);color:var(--text-inv);border:none;padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.2s;}
+.btn-primary:hover{background:var(--accent);}
+.btn-secondary{display:inline-block;background:transparent;color:var(--accent);border:1px solid var(--accent);padding:13px 28px;font-family:var(--font-b);font-size:14px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;}
+footer{background:var(--bg-dark);color:var(--text-inv);border-top:1px solid rgba(139,105,20,0.3);padding:56px 64px 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand{display:flex;flex-direction:column;gap:16px;}
+.footer-brand-name{font-family:var(--font-d);font-size:24px;font-weight:300;}
+.footer-tagline{font-size:15px;color:#A89070;line-height:1.6;font-weight:300;max-width:280px;}
+.footer-socials{display:flex;gap:16px;margin-top:8px;}
+.footer-socials a{font-family:var(--font-m);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-light);text-decoration:none;opacity:0.8;}
+.footer-col h4{font-family:var(--font-m);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px;}
+.footer-col a{display:block;font-size:15px;color:#A89070;text-decoration:none;margin-bottom:10px;font-weight:300;}
+.footer-col a:hover{color:var(--text-inv);}
+.footer-bottom{border-top:1px solid rgba(139,105,20,0.2);padding-top:24px;display:flex;justify-content:space-between;}
+.footer-copy{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:#5A4A38;}
+</style>
+<link rel="stylesheet" href="../../pe-switch.css">
+<link rel="stylesheet" href="../../mobile.css">
+<script src="../../mobile-nav.js" defer></script>
+</head>
+<body><style>
+.article-wrap{display:grid;grid-template-columns:1fr 300px;gap:0;max-width:1200px;margin:0 auto;padding:0 0 96px;}
+.article-header{grid-column:1/-1;padding:64px 64px 48px;border-bottom:1px solid var(--accent-muted);}
+.article-tag{font-family:var(--font-m);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--bg-subtle);padding:4px 12px;}
+.article-meta{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:var(--text-faint);}
+.article-title{font-family:var(--font-d);font-size:64px;font-weight:300;line-height:1.06;color:var(--text);max-width:780px;margin-bottom:20px;}
+.article-deck{font-size:19px;line-height:1.65;color:var(--text-muted);max-width:640px;font-weight:300;margin-bottom:28px;}
+.article-byline{display:flex;align-items:center;gap:14px;}
+.byline-avatar{width:40px;height:40px;border-radius:50%;border:1px solid var(--accent-muted);overflow:hidden;}
+.byline-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.byline-name{font-size:15px;font-weight:500;color:var(--text);}
+.byline-detail{font-family:var(--font-m);font-size:11px;letter-spacing:0.12em;color:var(--text-faint);}
+.article-body{padding:52px 64px 0;}
+.prose p{font-size:17px;line-height:1.78;color:var(--text-muted);font-weight:300;margin-bottom:22px;}
+.prose strong{font-weight:500;color:var(--text);}
+.prose em{font-style:italic;}
+.prose h2{font-family:var(--font-d);font-size:36px;font-weight:400;color:var(--text);margin:48px 0 18px;line-height:1.12;}
+.prose h3{font-family:var(--font-d);font-size:26px;font-weight:400;color:var(--text);margin:32px 0 12px;}
+.prose ul{padding-left:0;list-style:none;margin-bottom:22px;}
+.prose ul li{font-size:17px;line-height:1.65;color:var(--text-muted);font-weight:300;padding:6px 0 6px 20px;border-left:2px solid var(--accent-muted);margin-bottom:6px;}
+.pullquote{margin:36px 0;padding:22px 0 22px 24px;border-left:3px solid var(--accent);background:var(--bg-subtle);}
+.pullquote p{font-family:var(--font-d);font-size:26px;font-style:italic;color:var(--text);line-height:1.45;margin:0;font-weight:400;}
+.pullquote cite{display:block;font-family:var(--font-m);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-top:12px;font-style:normal;}
+.quick-ref{background:var(--bg-dark);padding:28px 32px;margin:36px 0;}
+.quick-ref-label{font-family:var(--font-m);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px;}
+.quick-ref-item{display:flex;gap:16px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(139,105,20,0.15);}
+.quick-ref-item:last-child{border-bottom:none;padding-bottom:0;}
+.quick-ref-num{font-family:var(--font-m);font-size:11px;color:var(--accent-light);min-width:22px;font-weight:500;}
+.quick-ref-text{font-size:16px;color:var(--text-inv);font-weight:300;line-height:1.4;}
+.article-sidebar{padding:52px 40px 0 36px;border-left:1px solid var(--accent-muted);}
+.sidebar-section{margin-bottom:36px;}
+.sidebar-label{font-family:var(--font-m);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.author-card{border:1px solid var(--accent-muted);padding:20px;}
+.author-photo{width:52px;height:52px;border-radius:50%;overflow:hidden;border:1px solid var(--accent-muted);margin-bottom:12px;}
+.author-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.author-name{font-family:var(--font-d);font-size:18px;font-weight:400;margin-bottom:4px;}
+.author-title{font-family:var(--font-m);font-size:10px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;line-height:1.5;}
+.author-bio{font-size:14px;color:var(--text-muted);line-height:1.6;font-weight:300;}
+.author-link{display:inline-block;margin-top:12px;font-family:var(--font-m);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.sidebar-cta{background:var(--bg-dark);padding:22px;}
+.sidebar-cta h4{font-family:var(--font-d);font-size:20px;font-weight:300;color:var(--text-inv);margin-bottom:10px;line-height:1.3;}
+.sidebar-cta p{font-size:14px;color:#A89070;line-height:1.55;font-weight:300;margin-bottom:16px;}
+.sidebar-cta a{display:block;background:var(--accent);color:var(--text-inv);padding:11px 16px;font-family:var(--font-b);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;margin-bottom:8px;}
+.related-item{padding:12px 0;border-bottom:1px solid var(--accent-muted);}
+.related-item:last-child{border-bottom:none;}
+.related-item a{font-family:var(--font-d);font-size:17px;font-weight:400;color:var(--text);text-decoration:none;line-height:1.3;display:block;margin-bottom:4px;}
+.related-item a:hover{color:var(--accent);}
+.related-item span{font-family:var(--font-m);font-size:10px;letter-spacing:0.1em;color:var(--text-faint);}
+.article-footer-cta{grid-column:1/-1;background:var(--bg-dark);padding:56px 64px;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:64px;}
+.article-footer-cta h2{font-family:var(--font-d);font-size:40px;font-weight:300;color:var(--text-inv);line-height:1.1;max-width:520px;}
+</style><nav>
+  <a class="nav-brand" href="/">
+    <div class="nav-logo-mark"><span>SR</span></div>
+    <span class="nav-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.7;">PhD<span class="pe-cred">, PE</span></span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="../../about">About</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">Work With Me &#9662;</button>
+      <div class="nav-dropdown-menu">
+        <a href="../../individuals">Individuals &amp; Families</a>
+        <a href="../../attorneys">Estate Attorneys &amp; CLE</a>
+        <a href="../../advisors">Financial Advisors</a>
+        <a href="../../institutions">Institutions</a>
+      </div>
+    </div>
+    <a href="../../resources">Resources</a>
+    <a href="../../contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="../../contact">Schedule a Consultation</a>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/">Home</a>
+  <a href="../../about">About</a>
+  <div class="mob-dropdown">
+    <button class="mob-dropdown-trigger">Work With Me &#9662;</button>
+    <div class="mob-dropdown-menu">
+      <a href="../../individuals">Individuals &amp; Families</a>
+      <a href="../../attorneys">Estate Attorneys &amp; CLE</a>
+      <a href="../../advisors">Financial Advisors</a>
+      <a href="../../institutions">Institutions</a>
+    </div>
+  </div>
+  <a href="../../resources">Resources</a>
+  <a href="../../contact">Contact</a>
+  <a class="nav-cta-mobile" href="../../contact">Schedule a Consultation</a>
+</div>
+<div class="article-wrap">
+
+  <div class="article-header">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;">
+      <span class="article-tag">For Financial Advisors</span>
+      <span class="article-meta">· July 2026 · 11 min read</span>
+    </div>
+    <h1 class="article-title">Why Recommending Self-Custody Makes You a Better Advisor — Not a Riskier One</h1>
+    <p class="article-deck">The spot ETF made bitcoin easy to allocate. It did not make the ETF the right answer for every client — and the advisors who can tell the difference are keeping the clients worth keeping.</p>
+    <div class="article-byline">
+      <div class="byline-avatar"><img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves"></div>
+      <div>
+        <div class="byline-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="byline-detail">Professor Emeritus · Auburn University</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="article-body">
+    <div class="prose">
+      <p>The spot bitcoin ETFs solved a real problem. They made bitcoin allocatable inside the standard advisory workflow — billable, reportable, custodied by recognizable names, and accessible through the brokerage account the client already has. For an entire class of client, that is the right answer.</p>
+      <p>It is also not the only answer, and increasingly it is not the most valuable one.</p>
+      <p>An advisor whose bitcoin competence ends at the ETF can serve one kind of bitcoin client: the one who wants price exposure inside the existing financial system. That client exists, and that client is well served. But there is a growing class of client — the highest-fee, highest-retention, highest-referral segment of the bitcoin market — for whom the ETF is a near-miss rather than a substitute. Serving that client requires the ability to recommend, support, and refer on self-custody.</p>
+      <p><em>The advisor who develops self-custody competence is serving a wider range of clients, meeting a higher fiduciary standard, and building a practice that is defensible against the specialist firms already taking those clients.</em> The advisor who does not is making a quiet bet that ETF allocation is the whole job. That bet looks worse every year.</p>
+
+      <h2>What the ETF Is — and What It Isn't</h2>
+      <p>A spot bitcoin ETF is a claim on bitcoin held by a custodian. The shares track the price closely. They are tradable in a brokerage account, eligible for retirement vehicles, and covered by the standard reporting infrastructure that makes them easy to incorporate into a financial plan. For most allocations, by most clients, that is sufficient.</p>
+      <p>But the bitcoin thesis itself — fixed supply, censorship resistance, bearer asset, independence from institutional failure — describes properties of <em>self-custodied</em> bitcoin. The ETF inherits the price exposure and discards everything else.</p>
+      <p>In practice this means several things. ETF shares can be frozen by regulatory or legal action against the issuer or custodian. The custodian itself can fail — and a single custodian holds the underlying bitcoin for the substantial majority of US spot ETF assets, a counterparty concentration that would be flagged immediately in any other asset class. The shares cannot be spent. They cannot cross a border in a memorized phrase. They cannot serve as collateral in bitcoin-native lending arrangements. They depend, end to end, on the same financial infrastructure the client may have chosen bitcoin to be independent of.</p>
+      <p>None of this is hypothetical. Each failure mode has precedent in other asset classes — gold confiscation, sanctioned fund closures, custodian insolvencies. For the client who holds bitcoin specifically because of the properties that distinguish it from the rest of the portfolio, the ETF delivers the volatility without the protection. That is not a minor distinction. It is the distinction.</p>
+
+      <h2>The Fiduciary Case</h2>
+      <p>Suitability and fiduciary duty require recommending what fits the client's objectives — not what fits the advisor's workflow. That is the standard the profession agrees on. The question is whether it is being met.</p>
+      <p>If a client holds bitcoin because they want sovereign exposure to a bearer asset outside the traditional financial system, an ETF inside that system does not satisfy the objective. The ETF is not bad — it simply does not deliver what the client is paying for. Recommending it anyway, because it fits the billing system, substitutes the advisor's convenience for the client's objective. That is the textbook conflict the fiduciary standard exists to address.</p>
+      <p>The tax dimension is underappreciated. Specific-identification lot selection is cleaner when the client controls discrete UTXOs than when shares sit aggregated in a brokerage account. Charitable contribution of appreciated bitcoin at fair market value, without recognition of capital gains, is available in either form but more flexibly executed in self-custody. Basis step-up at death applies to both, but the inheritance mechanics — and the planning opportunities around them — are materially different. Borrowing against bitcoin without triggering a disposition is a self-custody capability the ETF cannot replicate. An advisor who defaults to the ETF without exploring these options is leaving real client value on the table.</p>
+      <p>Then there is concentration risk. When an advisor routes every bitcoin-curious client into one or two ETF issuers, the client's bitcoin allocation — held partly for diversification away from the rest of the portfolio — is reconcentrated onto the same custodian, the same regulatory regime, and the same operational infrastructure as much of the rest of their wealth. Recommending self-custody for the bearer-asset portion of a bitcoin allocation is standard portfolio hygiene, not bitcoin advocacy.</p>
+      <p>A fiduciary recommendation requires knowing both options well enough to match each to the client in front of you. An advisor who only knows one is not in a position to fulfill the standard.</p>
+
+      <h2>"But Isn't Recommending Self-Custody Riskier for Me?"</h2>
+      <p>This is the objection under the surface of every conversation I have with advisors, so it deserves a direct answer. The fear has a specific shape: <em>if I recommend self-custody and the client loses their keys, that is on me.</em></p>
+      <p>The fear is rational — about the wrong version of self-custody. Unsupported, do-it-yourself self-custody is genuinely hazardous: single hardware devices with no seed phrase backup, passphrases held only in memory, heirs who do not know the bitcoin exists. No advisor should send a client into that unassisted, and this article does not ask you to.</p>
+      <p>Professionally supported self-custody is a different thing. The architecture is designed to eliminate single points of failure. The documentation is written so that a non-technical heir can follow it. The inheritance procedure is integrated with the estate documents. The client is not improvising from online forums; they are working with a specialist whose engagement exists precisely to prevent the loss scenarios the advisor is worried about. The advisor's role is the recommendation and the referral — the same structure you already use for estate work and tax work. You never touch keys, never take operational custody risk, and never leave your lane.</p>
+      <p>Consider also where the liability actually runs. A client who told you they wanted a sovereign bearer asset and ended up in the ETF because it preserved your AUM has a real complaint. A client who saw both options and chose has made an informed decision. Presenting both custody methods and documenting the choice is the stronger compliance posture. If a complaint ever comes, you want the file to show the conversation happened.</p>
+
+      <h2>The Business Case</h2>
+      <p>The fiduciary argument is the one that ought to move you. The business argument is the one that often does.</p>
+      <p>High-net-worth and bitcoin-native clients are among the most attractive cohorts in the market right now — long tenure, large allocations, low service costs relative to assets, and aggressive referral behavior within their networks. They are also the segments most likely to disqualify an ETF-only advisor in the first meeting. They will ask questions like these:</p>
+      <ul>
+        <li>How would you incorporate bitcoin I hold in cold storage into my plan?</li>
+        <li>What do you think of a collaborative custody multisig versus a single-signature setup for a holding this size?</li>
+        <li>How do you handle tax-lot tracking for held-away bitcoin?</li>
+        <li>What does the inheritance documentation need to look like, and who prepares it?</li>
+      </ul>
+      <p>The advisor who can engage with those questions keeps the relationship. The advisor who deflects loses it — typically to a specialist firm the client found on their own.</p>
+      <p>The infrastructure for those specialists is already built. Collaborative custody firms run advisor programs. Bitcoin-focused RIAs are taking meetings every week with prospects who left their previous advisor specifically because that advisor could only offer the ETF. The trajectory is clear: the segment of clients asking self-custody questions is growing, and the supply of advisors who can answer them is growing alongside it. The advisor who is not part of that growth is being routed around.</p>
+      <p>The fee-model question deserves directness. The AUM model creates a structural conflict with self-custody, because coins held outside the advisor's custodial infrastructure do not generate billable assets. An advisor who recognizes this and adjusts — held-away asset billing, flat retainer, hybrid arrangements, partnership with a collaborative custody firm that solves the visibility problem — is operating with fiduciary integrity. An advisor who quietly steers every client toward the ETF because it preserves AUM has a conflict of interest, and disclosed or not, it is shaping the recommendation.</p>
+      <p>The honest version of the business case is not that self-custody recommendations grow the practice by themselves. It is that the practice built around honest matching of custody method to client objective — with a fee model to support it — is the practice that retains the clients worth retaining.</p>
+
+      <h2>What "Recommending Self-Custody" Actually Means</h2>
+      <p>The phrase causes more anxiety than it should. It does not mean managing client keys, taking operational custody risk, or becoming a technical specialist in hardware wallet configuration. It means four specific things, none of which require leaving the advisor's lane.</p>
+      <p><strong>Identify the candidates.</strong> Know enough about self-custody to recognize which clients are candidates for it and which are not. Most are not. The client with a $25,000 ETF position in a Roth IRA does not need a multisig architecture. The client with a meaningful percentage of liquid net worth in bitcoin, or with the bearer-asset thesis as a stated objective, does.</p>
+      <p><strong>Refer the architecture.</strong> Maintain a referral relationship with a custody specialist who handles the architecture, documentation, and inheritance planning that sit outside your expertise — the same way you refer estate matters to an estate attorney and tax matters to a CPA. The advisor remains the advisor.</p>
+      <p><strong>Plan around the holding.</strong> Integrate the held-away bitcoin into the broader financial plan: tax-lot tracking, estate documentation that references the custody documentation, charitable giving strategy, retirement income modeling that includes the holding even though it does not sit in the brokerage account. This is advisor work, not custody work — and it is the work the ETF-only advisor is not doing.</p>
+      <p><strong>Present both options.</strong> When a client asks, present the ETF and self-custody coherently, with the tradeoffs articulated honestly enough that the client can choose with full information. Not advocacy — clarity. The advisor who can do this is the advisor the client trusts with the next question, and the question after that.</p>
+
+      <h2>The Client Who Asks, and the Client Who Doesn't</h2>
+      <p>Three kinds of bitcoin clients are walking into advisory offices right now.</p>
+      <p>The first already self-custodies and is interviewing you. They are evaluating whether you can incorporate their held-away bitcoin into the plan, whether you understand the custody and inheritance architecture they have built, and whether you will pressure them to liquidate into the ETF because it suits your workflow. If you cannot serve them, they will find someone who can. They are usually not subtle about this.</p>
+      <p>The second holds the ETF, has not thought about the distinction, and trusts that you have. They deserve to be told there is a choice. If the ETF is the right answer for them, the conversation confirms it. If it is not, the conversation surfaces something they would want to know.</p>
+      <p>The third has decided to buy bitcoin for the first time and is asking how. For some, the ETF will be correct. For others, self-custody will be. For many, a split allocation — most in the ETF, a meaningful portion in self-custody — is the right answer, and it is an answer the ETF-only advisor is structurally unable to give.</p>
+      <p>The advisor who can serve all three is building a practice with optionality. The advisor who can serve only the second is building a practice with a ceiling.</p>
+    </div>
+
+    <div class="pullquote">
+      <p>"Your fiduciary duty runs to the client's objectives, not to your portfolio management software. When the two conflict, it is not the client's objectives that need to change."</p>
+      <cite>Stan Reeves</cite>
+    </div>
+
+    <div class="quick-ref">
+      <div class="quick-ref-label">What Self-Custody Competence Looks Like</div>
+      <div class="quick-ref-item"><div class="quick-ref-num">01</div><div class="quick-ref-text">Know which clients are candidates for self-custody — and which are not</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">02</div><div class="quick-ref-text">Keep a referral relationship with a custody and inheritance specialist</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">03</div><div class="quick-ref-text">Integrate held-away bitcoin into the plan: tax lots, estate documents, giving, income modeling</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">04</div><div class="quick-ref-text">Present ETF and self-custody side by side, with the tradeoffs stated plainly</div></div>
+      <div class="quick-ref-item"><div class="quick-ref-num">05</div><div class="quick-ref-text">Match the fee model to the recommendation, so the conflict never shapes the advice</div></div>
+    </div>
+
+    <div class="prose">
+      <h2>Conclusion</h2>
+      <p>The ETF is a real tool. So is self-custody. The advisor's job is to know both, match each to the right client, and have the referral relationships in place to support the recommendation when the recommendation is self-custody. The practice that does this is more defensible against the specialist firms taking client share, meets the fiduciary standard in substance and not only in form, and is better positioned for the next decade of bitcoin adoption than the practice betting the ETF is sufficient.</p>
+      <p>If you are an advisor with bitcoin-holding clients — or clients who are likely to become bitcoin holders — the question is not whether to develop self-custody competence. It is how, and with whom. My practice exists to fill that role: the custody architecture, documentation, and inheritance planning that sit alongside your financial planning, so that you can recommend self-custody confidently and serve the full range of clients your practice will increasingly encounter.</p>
+      <p>I welcome the conversation.</p>
+
+      <div style="border-top:1px solid var(--accent-muted);padding-top:28px;margin-top:28px;">
+        <p style="font-size:14px;color:var(--text-faint);font-style:italic;font-weight:300;">Stan Reeves is Professor Emeritus in the Department of Electrical &amp; Computer Engineering at Auburn University and a bitcoin custody and inheritance consultant. He works alongside financial advisors as a referral partner for clients requiring self-custody architecture, documentation, and inheritance planning. Contact: <a href="mailto:stan@stanreeves.com" style="color:var(--accent);">stan@stanreeves.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <aside class="article-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">About the Author</div>
+      <div class="author-card">
+        <div class="author-photo"><img src="https://stanreeves.com/images/stan-reeves.jpg" alt="Stan Reeves"></div>
+        <div class="author-name">Stan Reeves, PhD<span class="pe-cred">, PE</span></div>
+        <div class="author-title">Professor Emeritus<br>Auburn University</div>
+        <div class="author-bio">Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</div>
+        <a class="author-link" href="../../about">Read full bio →</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-cta">
+        <h4>For Financial Advisors</h4>
+        <p>Stan works alongside advisors as a referral partner for clients who need self-custody architecture, documentation, and inheritance planning.</p>
+        <a href="../../advisors">Learn More</a>
+        <a href="../../contact?subject=Advisor+Referral" style="background:transparent;color:var(--accent-light);border:1px solid rgba(196,163,90,0.4);">Refer a Client</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Related Reading</div>
+      <div class="related-item">
+        <a href="../post">The Five Most Common Bitcoin Custody Mistakes</a>
+        <span>For Individuals · April 2026</span>
+      </div>
+      <div class="related-item">
+        <a href="../bitcoin-inheritance-attorneys">What Estate Attorneys Need to Know About Bitcoin Inheritance</a>
+        <span>For Attorneys · April 2026</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="article-footer-cta">
+    <h2>Serve your bitcoin-holding clients with confidence.</h2>
+    <a class="btn-primary" style="background:var(--accent);" href="../../contact?subject=Advisor+Referral">Start the Conversation</a>
+  </div>
+
+</div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Stan Reeves, <span style="font-size:14px;opacity:0.6;font-family:var(--font-m);letter-spacing:0.06em;">PhD<span class="pe-cred">, PE</span></span></div>
+      <p class="footer-tagline">Professor Emeritus, Auburn University. Bitcoin custody and inheritance guidance for serious holders, estate attorneys, financial advisors, and institutions.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/stan-reeves-ba75289/">LinkedIn</a>
+        <a href="https://x.com/onedigitmoney">@onedigitmoney</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Pages</h4>
+      <a href="/">Home</a><a href="../../about">About</a><a href="../../resources">Resources</a><a href="../../contact">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Work With Me</h4>
+      <a href="../../individuals">Individuals &amp; Families</a><a href="../../attorneys">Estate Attorneys</a><a href="../../advisors">Financial Advisors</a><a href="../../institutions">Institutions</a>
+    </div>
+    <div class="footer-col"><h4>Resources</h4>
+      <a href="../bitcoin-inheritance-attorneys">Bitcoin &amp; Estate Attorneys</a>
+      <a href="../post">5 Custody Mistakes</a>
+      <a href="../churches">Bitcoin for Churches</a>
+      <a href="../self-custody-advisors">Self-Custody for Advisors</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Stan Reeves. All rights reserved. · stanreeves.com · stan@stanreeves.com</div>
+  </div>
+</footer></body></html>
